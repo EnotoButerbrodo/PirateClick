@@ -4,19 +4,19 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button _coinSceneButton;
+    [SerializeField] private Button _clickerSceneCoin;
     
     private void OnEnable()
     {
-        _coinSceneButton.onClick.AddListener(OpenCoinScene);
+        _clickerSceneCoin.onClick.AddListener(OnClickerButton);
     }
 
     private void OnDisable()
     {
-        _coinSceneButton.onClick.RemoveListener(OpenCoinScene);
+        _clickerSceneCoin.onClick.RemoveListener(OnClickerButton);
     }
 
-    private void OpenCoinScene() 
-        => SceneLoader.LoadCoinScene();
+    private void OnClickerButton() 
+        => SceneLoader.LoadClickerScene();
     
 }
