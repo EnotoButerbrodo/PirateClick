@@ -1,0 +1,65 @@
+{
+    "name": "InputScheme",
+    "maps": [
+        {
+            "name": "Clicker",
+            "id": "ff3b2bcf-25da-4c7a-a97c-75bfe45cb041",
+            "actions": [
+                {
+                    "name": "ScreenTouch",
+                    "type": "Value",
+                    "id": "f1a5cf0d-d646-45b6-9c9f-2606a943a71d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "8c03048f-c24d-4093-8055-ada545d4fec8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "049c7a01-00b8-4837-a87f-aef997b66bdf",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3215487-75d5-457c-8665-e32a5732c089",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5ea8b54-e0d8-4297-9cc0-b57fbf47610e",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

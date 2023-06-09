@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42ddb5281f96574ebdb1ecdfd6ae074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinSceneButton: {fileID: 1181689504}
+  _clickerSceneCoin: {fileID: 1181689504}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

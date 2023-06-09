@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 34294e6bdb1d9544d9c1974bfde87af2
+guid: 2cd1264d1f20d5e46843f7477fdabc68
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: chest_simple
-    second: {fileID: 2100000, guid: 64ae43b6b6e887545ad0a92b6b491ec8, type: 2}
+    second: {fileID: 2100000, guid: 045dbb79887bc914f8ddcf01dc356d43, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: coins
-    second: {fileID: 2100000, guid: ccc85add18994f0479bf8a3beded1d81, type: 2}
+    second: {fileID: 2100000, guid: f0a79cf84c0097c429eee32c3d542f1a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -52,8 +52,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -66,7 +66,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
+    optimizeBones: 0
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -86,7 +86,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -101,11 +101,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

@@ -8,7 +8,7 @@ public static class SceneLoader
     public static void LoadMainMenu() 
         => LoadScene(MainMenuSceneName);
 
-    public static void LoadClickerScene()
+    public static void LoadClickerScene()  
         => LoadScene(ClickerSceneName);
 
     private static void LoadScene(string sceneName) 
