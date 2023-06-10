@@ -22,13 +22,13 @@ namespace Code.Services.InputService
         {
             _input = new InputScheme();
 
-            _input.Clicker.ScreenTouch.started += OnScreenTouch;
+            _input.Clicker.ScreenTouch.performed += OnScreenTouch;
             _input.Clicker.MouseClick.started += OnMouse; 
         }
 
         private void OnMouse(InputAction.CallbackContext obj)
         {
-            ScreenTouch?.Invoke(_input.Clicker.ScreenTouch.ReadValue<Vector2>());
+            ScreenTouch?.Invoke(_input.Clicker.MousePosition.ReadValue<Vector2>());
         }
 
         private void OnScreenTouch(InputAction.CallbackContext context)

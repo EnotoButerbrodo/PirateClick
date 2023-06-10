@@ -44,6 +44,15 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""f0344261-2b2d-41ea-a501-cfab75c1ca3e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -53,19 +62,8 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""MouseClick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d3215487-75d5-457c-8665-e32a5732c089"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ScreenTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -75,20 +73,55 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Touchscreen"",
                     ""action"": ""ScreenTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e43ecdd6-5689-41c5-9e3e-aae1decfaef0"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Touchscreen"",
+            ""bindingGroup"": ""Touchscreen"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PC"",
+            ""bindingGroup"": ""PC"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Clicker
         m_Clicker = asset.FindActionMap("Clicker", throwIfNotFound: true);
         m_Clicker_ScreenTouch = m_Clicker.FindAction("ScreenTouch", throwIfNotFound: true);
         m_Clicker_MouseClick = m_Clicker.FindAction("MouseClick", throwIfNotFound: true);
+        m_Clicker_MousePosition = m_Clicker.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -152,12 +185,14 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
     private List<IClickerActions> m_ClickerActionsCallbackInterfaces = new List<IClickerActions>();
     private readonly InputAction m_Clicker_ScreenTouch;
     private readonly InputAction m_Clicker_MouseClick;
+    private readonly InputAction m_Clicker_MousePosition;
     public struct ClickerActions
     {
         private @InputScheme m_Wrapper;
         public ClickerActions(@InputScheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @ScreenTouch => m_Wrapper.m_Clicker_ScreenTouch;
         public InputAction @MouseClick => m_Wrapper.m_Clicker_MouseClick;
+        public InputAction @MousePosition => m_Wrapper.m_Clicker_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Clicker; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -173,6 +208,9 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @MouseClick.started += instance.OnMouseClick;
             @MouseClick.performed += instance.OnMouseClick;
             @MouseClick.canceled += instance.OnMouseClick;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IClickerActions instance)
@@ -183,6 +221,9 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @MouseClick.started -= instance.OnMouseClick;
             @MouseClick.performed -= instance.OnMouseClick;
             @MouseClick.canceled -= instance.OnMouseClick;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IClickerActions instance)
@@ -200,9 +241,28 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         }
     }
     public ClickerActions @Clicker => new ClickerActions(this);
+    private int m_TouchscreenSchemeIndex = -1;
+    public InputControlScheme TouchscreenScheme
+    {
+        get
+        {
+            if (m_TouchscreenSchemeIndex == -1) m_TouchscreenSchemeIndex = asset.FindControlSchemeIndex("Touchscreen");
+            return asset.controlSchemes[m_TouchscreenSchemeIndex];
+        }
+    }
+    private int m_PCSchemeIndex = -1;
+    public InputControlScheme PCScheme
+    {
+        get
+        {
+            if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
+            return asset.controlSchemes[m_PCSchemeIndex];
+        }
+    }
     public interface IClickerActions
     {
         void OnScreenTouch(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
