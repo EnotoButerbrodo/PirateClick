@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Clicker
 {
     public class Chest : MonoBehaviour, IClickable
     {
         [SerializeField] private ChestAnimator _animator;
-        [SerializeField] private SelectableMaterial _material;
+        [SerializeField] private ChestMaterialProvider chestMaterialProvider;
 
         private Coroutine _selectReactionCoroutine;
         
@@ -24,9 +25,9 @@ namespace Code.Clicker
 
         private IEnumerator SelectReaction()
         {
-            _material.SetSelected();
+            chestMaterialProvider.SetSelected();
             yield return new WaitForSeconds(0.1f);
-            _material.SetDeselected();
+            chestMaterialProvider.SetDeselected();
         }
     }
 }
