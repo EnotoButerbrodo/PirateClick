@@ -105,6 +105,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorLerpPercent: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -136,8 +137,8 @@ Material:
     - _DefaultEmission: {r: 0, g: 0, b: 0, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SelectedColor: {r: 1, g: 0.8209481, b: 0, a: 1}
-    - _SelectedEmission: {r: 1, g: 0.7535237, b: 0, a: 1}
+    - _SelectedColor: {r: 0.3679245, g: 0.33495015, b: 0.33495015, a: 1}
+    - _SelectedEmission: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -7,7 +7,7 @@ namespace Code.Clicker
     public class Chest : MonoBehaviour, IClickable
     {
         [SerializeField] private ChestAnimator _animator;
-        [SerializeField] private ChestMaterial _material;
+        [SerializeField] private SelectableMaterial _material;
 
         private Coroutine _selectReactionCoroutine;
         
