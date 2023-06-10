@@ -1,5 +1,6 @@
 ﻿using Code.Services.InputService;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Clicker
 {
@@ -8,15 +9,14 @@ namespace Code.Clicker
         public int ClickMoneyAmount = 1;
         
         [SerializeField] private ClickService _clickService;
-        private IInputService _inputService;
         
-        private Wallet _wallet;
+        [Inject] private IInputService _inputService;
+        
+        [Inject] private IWallet _wallet;
         
         private void Awake()
         {
-            _inputService = new InputService();
             _wallet = new Wallet();
-
         }
         
         private void OnEnable()

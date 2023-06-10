@@ -2,7 +2,7 @@
 
 namespace Code.Clicker
 {
-    public class Wallet
+    public class Wallet : IWallet
     {
         public event Action<int> ValueChanged;
 
