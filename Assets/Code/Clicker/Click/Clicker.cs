@@ -13,11 +13,7 @@ namespace Code.Clicker
         [Inject] private IInputService _inputService;
         
         [Inject] private IWallet _wallet;
-        
-        private void Awake()
-        {
-            _wallet = new Wallet();
-        }
+
         
         private void OnEnable()
         {

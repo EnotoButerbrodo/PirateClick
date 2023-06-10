@@ -1,32 +1,26 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Code.Clicker
 {
     public class Wallet : IWallet
     {
         public event Action<int> ValueChanged;
-
-        private int Moneys
-        {
-            get => _moneys;
-            set
-            {
-                _moneys = value;
-                ValueChanged?.Invoke(value);
-            }
-        }
-        private int _moneys;
+        
+        private int _moneys = 0;
 
         public void Add(int value)
         {
-            Moneys += value;
+            _moneys += value;
+            ValueChanged?.Invoke(_moneys);
         }
 
         public bool TrySpend(int amount)
         {
-            if (Moneys >= amount)
+            if (_moneys >= amount)
             {
-                Moneys -= amount;
+                _moneys -= amount;
+                ValueChanged?.Invoke(_moneys);
                 return true;
             }
 
