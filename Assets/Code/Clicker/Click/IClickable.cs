@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Code.Levels.Clicker
+namespace Code.Clicker
 {
     public interface IClickable
     {

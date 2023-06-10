@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Code.Levels.Clicker
+namespace Code.Clicker
 {
     public class ChestAnimator : MonoBehaviour
     {

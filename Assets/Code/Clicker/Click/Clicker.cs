@@ -1,8 +1,7 @@
-﻿using System;
-using Code.Services.InputService;
+﻿using Code.Services.InputService;
 using UnityEngine;
 
-namespace Code.Levels.Clicker
+namespace Code.Clicker
 {
     public class Clicker : MonoBehaviour
     {
