@@ -11,7 +11,6 @@ namespace Code.Clicker
         [SerializeField] private ClickService _clickService;
         
         [Inject] private IInputService _inputService;
-        
         [Inject] private IWallet _wallet;
 
         
