@@ -11,16 +11,21 @@ namespace Code.Clicker
         [SerializeField] private ChestMaterialProvider chestMaterialProvider;
 
         private Coroutine _selectReactionCoroutine;
-        
+
+        public event Action Clicked;
+
         [ContextMenu("React")]
         public void React()
         {
+            
             _animator.StartClickAnimation();
             
             if(_selectReactionCoroutine != null)
                 StopCoroutine(_selectReactionCoroutine);
 
             _selectReactionCoroutine = StartCoroutine(SelectReaction());
+            
+            Clicked?.Invoke();
         }
 
         private IEnumerator SelectReaction()

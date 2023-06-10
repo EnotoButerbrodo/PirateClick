@@ -10,7 +10,7 @@ namespace Code.Services.InputService
 
         private InputScheme _input;
 
-        public void SetClickerInputState(bool isEnabled)
+        public void SetEnabled(bool isEnabled)
         {
             if (isEnabled)
                 _input.Clicker.Enable();

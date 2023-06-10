@@ -255,6 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174973687}
+  - component: {fileID: 174973689}
   - component: {fileID: 174973688}
   m_Layer: 0
   m_Name: Clicker
@@ -294,6 +295,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _raycastLenght: 500
+--- !u!114 &174973689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174973686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745e134444c24de8b7413cb26c90799c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clickService: {fileID: 174973688}
 --- !u!1 &330918514
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &788952016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +927,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -930,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: m_LocalRotation.y

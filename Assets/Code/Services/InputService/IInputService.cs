@@ -7,6 +7,6 @@ namespace Code.Services.InputService
     {
         public event Action<Vector2> ScreenTouch;
 
-        public void SetClickerInputState(bool isEnabled);
+        public void SetEnabled(bool isEnabled);
     }
 }

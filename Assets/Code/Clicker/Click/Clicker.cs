@@ -5,51 +5,38 @@ namespace Code.Clicker
 {
     public class Clicker : MonoBehaviour
     {
-        [SerializeField] private LayerMask _clickableLayer;
-        [SerializeField][Range(0f, 500f)] private float _raycastLenght = 10f;
-
-        private RaycastHit[] _clickCastResults = new RaycastHit[1];
-        private Camera _camera;
+        public int ClickMoneyAmount = 1;
+        
+        [SerializeField] private ClickService _clickService;
         private IInputService _inputService;
-
+        
+        private Wallet _wallet;
+        
         private void Awake()
         {
             _inputService = new InputService();
-        }
+            _wallet = new Wallet();
 
-        private void Start()
-        {
-            _camera = Camera.main;
         }
-
+        
         private void OnEnable()
         {
-            _inputService.ScreenTouch += Click;
-            _inputService.SetClickerInputState(isEnabled: true);
+            _inputService.ScreenTouch += HandleClick;
+            _inputService.SetEnabled(isEnabled: true);
         }
 
         private void OnDisable()
         {
-            _inputService.ScreenTouch -= Click;
-            _inputService.SetClickerInputState(isEnabled: false);
+            _inputService.ScreenTouch -= HandleClick;
+            _inputService.SetEnabled(isEnabled: false);
         }
 
-        private void Click(Vector2 touchPosition)
+        private void HandleClick(Vector2 touchPosition)
         {
-            Ray clickRay = _camera.ScreenPointToRay(touchPosition);
-            
-            int clickedObjectCount = Physics.RaycastNonAlloc(
-                ray: clickRay
-                , results: _clickCastResults
-                , maxDistance: _raycastLenght
-                , layerMask: _clickableLayer);
-
-            if (clickedObjectCount > 0)
+            if (_clickService.CheckPosition(touchPosition, out IClickable clickable))
             {
-                if (_clickCastResults[0].collider.TryGetComponent<IClickable>(out var clicable))
-                {
-                    clicable.React();
-                }
+                clickable.React();
+                _wallet.Add(ClickMoneyAmount);
             }
         }
     }
