@@ -50,14 +50,14 @@ namespace Code.Clicker
             while (true)
             {
                 var targetPivot = _coinPickupPosition.pivot;
-                
                 var targetViewportPosition = new Vector3(
                       targetPivot.x
                     , targetPivot.y
                     , _camera.nearClipPlane);
 
                 var targetWorldPosition = _camera.ViewportToWorldPoint(targetViewportPosition);
-
+                
+                
                 var coinPosition = coin.transform.position;
 
                 var offset = Vector3.MoveTowards(coinPosition, targetWorldPosition, Time.deltaTime * _coinSpeed);
