@@ -220,7 +220,7 @@ GameObject:
   m_Layer: 0
   m_Name: CoinPickupPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -250,8 +250,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6913349, y: 0.05306223, z: 0.17051551}
-  m_Center: {x: -0.0027076, y: 0.020886615, z: -0.06864346}
+  m_Size: {x: 0.514928, y: 0.043611854, z: 0.17681578}
+  m_Center: {x: 0.00044256437, y: 0.04766266, z: -0.04344247}
 --- !u!1001 &3771942525862986080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,12 +324,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4804148847339378293, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4804148847339378293, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.42261827
+      value: -0.42261827
+      objectReference: {fileID: 0}
+    - target: {fileID: -4804148847339378293, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4804148847339378293, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4804148847339378293, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 50
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: -4513227669371847523, guid: 2cd1264d1f20d5e46843f7477fdabc68, type: 3}
       propertyPath: m_Materials.Array.data[0]
