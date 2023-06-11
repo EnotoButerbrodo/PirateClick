@@ -4,7 +4,7 @@ namespace Code.Levels.Clicker
 {
     public class Rotation : MonoBehaviour
     {
-        [SerializeField][Range(0, 100f)] private float _rotationSpeed = 5f;
+        [SerializeField][Range(0, 500f)] private float _rotationSpeed = 5f;
         
         private void Update()
         {

@@ -119,6 +119,7 @@ Transform:
   m_Children:
   - {fileID: 3734074268485265035}
   - {fileID: 588334579035046253}
+  - {fileID: 4128050382606339441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -134,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c069639bd344fd96dfc004bc08a42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinsValuable: 1
+  _coinsCreateArea: {fileID: 1173004820330410633}
   _animator: {fileID: 3564329345568922938}
   chestMaterialProvider: {fileID: 5513267727554433673}
 --- !u!114 &3564329345568922938
@@ -204,6 +207,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8955708, y: 0.7371264, z: 0.7643283}
   m_Center: {x: 0.17104796, y: 0.3510985, z: -0.0009974241}
+--- !u!1 &8319749210542965117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4128050382606339441}
+  - component: {fileID: 1173004820330410633}
+  m_Layer: 0
+  m_Name: CoinPickupPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4128050382606339441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319749210542965117}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.02, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5442582108183636105}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1173004820330410633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319749210542965117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6913349, y: 0.05306223, z: 0.17051551}
+  m_Center: {x: -0.0027076, y: 0.020886615, z: -0.06864346}
 --- !u!1001 &3771942525862986080
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -57,7 +57,9 @@ namespace Code.Clicker
                     , _camera.nearClipPlane);
 
                 var targetWorldPosition = _camera.ViewportToWorldPoint(targetViewportPosition);
+
                 var coinPosition = coin.transform.position;
+
                 var offset = Vector3.MoveTowards(coinPosition, targetWorldPosition, Time.deltaTime * _coinSpeed);
                 coin.transform.position = offset;
                 
