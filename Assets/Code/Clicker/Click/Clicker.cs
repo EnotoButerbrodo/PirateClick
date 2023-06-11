@@ -6,14 +6,12 @@ namespace Code.Clicker
 {
     public class Clicker : MonoBehaviour
     {
-        public int ClickMoneyAmount = 1;
-        
         [SerializeField] private ClickService _clickService;
         
         [Inject] private IInputService _inputService;
         [Inject] private IWallet _wallet;
 
-        
+
         private void OnEnable()
         {
             _inputService.ScreenTouch += HandleClick;
@@ -31,7 +29,6 @@ namespace Code.Clicker
             if (_clickService.CheckPosition(touchPosition, out IClickable clickable))
             {
                 clickable.React();
-                _wallet.Add(ClickMoneyAmount);
             }
         }
     }

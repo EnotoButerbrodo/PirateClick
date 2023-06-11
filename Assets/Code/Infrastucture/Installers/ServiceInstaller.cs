@@ -10,6 +10,7 @@ namespace Code.Infrastucture
         {
             BindInputService();
             BindWallet();
+            BindClickerEvents();
         }
 
         private void BindInputService()
@@ -26,6 +27,14 @@ namespace Code.Infrastucture
             Container
                 .Bind<IWallet>()
                 .To<Wallet>()
+                .FromNew()
+                .AsSingle();
+        }
+
+        private void BindClickerEvents()
+        {
+            Container
+                .Bind<ClickerEvents>()
                 .FromNew()
                 .AsSingle();
         }

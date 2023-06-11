@@ -1,5 +1,5 @@
 ﻿using System;
-using UnityEngine;
+using DG.Tweening;
 
 namespace Code.Clicker
 {
