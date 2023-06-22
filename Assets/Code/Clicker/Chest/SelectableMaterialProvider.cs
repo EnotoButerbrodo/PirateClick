@@ -7,7 +7,8 @@ namespace Code.Clicker
 {
     public class SelectableMaterialProvider : MonoBehaviour
     {
-        [SerializeField] private Material _selectableMaterial;
+        [SerializeField] private MeshRenderer _meshRenderer;
+        private Material _selectableMaterial;
         
         private const string EmissionBlendPercentProperty = "_EmissionBlendPercent";
         private const string ColorLerpPercentProperty = "_ColorLerpPercent";
@@ -32,6 +33,7 @@ namespace Code.Clicker
 
         private void Awake()
         {
+            _selectableMaterial = _meshRenderer.material;
             CalculateShaderPropertiesHash();
         }
 
@@ -40,8 +42,6 @@ namespace Code.Clicker
             StartEmissionTween(1f);
             StartColorTween(1f);
         }
-
-        
 
         public void SetDeselected()
         {
