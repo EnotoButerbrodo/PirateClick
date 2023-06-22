@@ -9,7 +9,7 @@ namespace Code.Clicker
         [SerializeField] private LayerMask _clickableLayer;
         [SerializeField][Range(0f, 500f)] private float _raycastLenght = 10f;
 
-        private RaycastHit[] _clickCastResults = new RaycastHit[1];
+        private readonly RaycastHit[] _clickCheckResults = new RaycastHit[1];
         private Camera _camera;
         
         private void Start()
@@ -17,26 +17,24 @@ namespace Code.Clicker
             _camera = Camera.main;
         }
 
-        public bool CheckPosition(Vector2 touchPosition, out IClickable clickable)
+        public bool TryFindClickableObjectAtPosition(Vector2 touchPosition, out IClickable clickableObject)
         {
-            clickable = null;
+            clickableObject = null;
             
             Ray clickRay = _camera.ScreenPointToRay(touchPosition);
             
-            int clickedObjectCount = Physics.RaycastNonAlloc(
+            int findedObjectsCount = Physics.RaycastNonAlloc(
                 ray: clickRay
-                , results: _clickCastResults
+                , results: _clickCheckResults
                 , maxDistance: _raycastLenght
                 , layerMask: _clickableLayer);
-            
-            if (clickedObjectCount > 0  
-                && _clickCastResults[0].collider.TryGetComponent<IClickable>(out var result))
-            {
-                clickable = result;
-                return true;
-            }
 
-            return false;
+            if (findedObjectsCount == 0)
+                return false;
+
+            var potentialClickableObject = _clickCheckResults[0].collider;
+            
+            return potentialClickableObject.TryGetComponent<IClickable>(out clickableObject);
         }
     }
 }
