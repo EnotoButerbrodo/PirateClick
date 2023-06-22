@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening;
+﻿using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +14,6 @@ namespace Code.Clicker
         [Inject] private ClickerEvents _clickerEvents;
 
         private Camera _camera;
-       
 
         private void Start()
         {
@@ -35,7 +32,6 @@ namespace Code.Clicker
 
         private void OnCoinEarned(Vector3 earnWorldPosition)
         {
-            
             var coin = Instantiate(_coinPrefab
                 , earnWorldPosition
                 , Quaternion.identity);
@@ -45,24 +41,16 @@ namespace Code.Clicker
 
         private IEnumerator CoinPickupCoroutine(GameObject coin)
         {
-            bool isTargetReached;
-
             while (true)
             {
-                var targetPivot = _coinPickupPosition.pivot;
-                var targetViewportPosition = new Vector3(
-                      targetPivot.x
-                    , targetPivot.y
-                    , _camera.nearClipPlane);
-
-                var targetWorldPosition = _camera.ViewportToWorldPoint(targetViewportPosition);
-                
-                
+                var targetWorldPosition = GetTargetWorldPosition();
                 var coinPosition = coin.transform.position;
-
-                var offset = Vector3.MoveTowards(coinPosition, targetWorldPosition, Time.deltaTime * _coinSpeed);
-                coin.transform.position = offset;
                 
+                var newCoinPosition = Vector3.MoveTowards(coinPosition
+                    , targetWorldPosition
+                    , _coinSpeed * Time.deltaTime);
+                
+                coin.transform.position = newCoinPosition;
 
                 if (Vector3.Distance(targetWorldPosition, coinPosition) <= 0.1f)
                 {
@@ -71,10 +59,25 @@ namespace Code.Clicker
 
                 yield return null;
             }
-            OnCoinGetted(coin);
+            
+            OnCoinPickup(coin);
         }
 
-        private void OnCoinGetted(GameObject coin)
+        private Vector3 GetTargetWorldPosition()
+        {
+            var targetPivot = _coinPickupPosition.pivot;
+                
+            var targetViewportPosition = new Vector3(
+                targetPivot.x
+                , targetPivot.y
+                , _camera.nearClipPlane);
+
+            Vector3 targetWorldPosition = _camera.ViewportToWorldPoint(targetViewportPosition);
+            
+            return targetWorldPosition;
+        }
+
+        private void OnCoinPickup(GameObject coin)
         {
             Destroy(coin);
             _wallet.Add(1);

@@ -12,7 +12,6 @@ namespace Code.Clicker
             => CoinEarned?.Invoke(earnPosition);
 
         public event Action CoinPicked;
-
         public void CallCoinPicked()
             => CoinPicked?.Invoke();
     }
