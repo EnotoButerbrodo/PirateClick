@@ -71,7 +71,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""d5ea8b54-e0d8-4297-9cc0-b57fbf47610e"",
                     ""path"": ""<Touchscreen>/touch0/position"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Touchscreen"",
                     ""action"": ""ScreenTouch"",
