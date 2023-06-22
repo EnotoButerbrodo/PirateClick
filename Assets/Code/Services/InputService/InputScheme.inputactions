@@ -49,7 +49,7 @@
                     "name": "",
                     "id": "d5ea8b54-e0d8-4297-9cc0-b57fbf47610e",
                     "path": "<Touchscreen>/touch0/position",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Touchscreen",
                     "action": "ScreenTouch",
