@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Services;
 using UnityEngine;
 using Zenject;
@@ -10,6 +13,8 @@ namespace Code.Clicker
         [SerializeField] private GameObject _coinPrefab;
         [SerializeField] private RectTransform _coinPickupPosition;
         [SerializeField] private float _coinSpeed;
+        [SerializeField] private float _smallerDistance = 1f;
+        [SerializeField] private float _smallerSpeed = 0.5f;
         [SerializeField] private AudioClip _pickupAudio;
             
         [Inject] private IWallet _wallet;
@@ -46,16 +51,24 @@ namespace Code.Clicker
         {
             while (true)
             {
-                var targetWorldPosition = GetTargetWorldPosition();
-                var coinPosition = coin.transform.position;
+                Vector3 targetWorldPosition = GetTargetWorldPosition();
+                Vector3 coinPosition = coin.transform.position;
                 
-                var newCoinPosition = Vector3.MoveTowards(coinPosition
+                Vector3 newCoinPosition = Vector3.MoveTowards(coinPosition
                     , targetWorldPosition
                     , _coinSpeed * Time.deltaTime);
                 
                 coin.transform.position = newCoinPosition;
 
-                if (Vector3.Distance(targetWorldPosition, coinPosition) <= 0.1f)
+                var distanceToTarget = Vector3.Distance(targetWorldPosition, coinPosition);
+
+                if (distanceToTarget <= _smallerDistance)
+                {
+                    coin.transform
+                        .DOScale(Vector3.one * 0.1f, _smallerSpeed)
+                        .SetLink(coin.gameObject);
+                }
+                if (distanceToTarget <= 0.1f)
                 {
                     break;
                 }
@@ -84,8 +97,9 @@ namespace Code.Clicker
         {
             _clickerEvents.CallCoinPicked();
             _audio.Play(_pickupAudio);
-            Destroy(coin);
             _wallet.Add(1);
+            
+            Destroy(coin);
         }
     }
 }
