@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Services;
 using UnityEngine;
 using Zenject;
 
@@ -9,9 +10,11 @@ namespace Code.Clicker
         [SerializeField] private GameObject _coinPrefab;
         [SerializeField] private RectTransform _coinPickupPosition;
         [SerializeField] private float _coinSpeed;
+        [SerializeField] private AudioClip _pickupAudio;
             
         [Inject] private IWallet _wallet;
         [Inject] private ClickerEvents _clickerEvents;
+        [Inject] private IAudioService _audio;
 
         private Camera _camera;
 
@@ -79,6 +82,8 @@ namespace Code.Clicker
 
         private void OnCoinPickup(GameObject coin)
         {
+            _clickerEvents.CallCoinPicked();
+            _audio.Play(_pickupAudio);
             Destroy(coin);
             _wallet.Add(1);
         }
