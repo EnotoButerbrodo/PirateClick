@@ -12,7 +12,15 @@ namespace Code.Clicker
             => CoinEarned?.Invoke(earnPosition);
 
         public event Action CoinPicked;
+        
         public void CallCoinPicked()
             => CoinPicked?.Invoke();
+        
+        public delegate void ClickableClickDelegate(Vector3 clickWorldPosition, IClickable clickable);
+
+        public ClickableClickDelegate ClickableClicked;
+
+        public void CallClickableClicked(Vector3 clickWorldPosition, IClickable clickable)
+            => ClickableClicked?.Invoke(clickWorldPosition, clickable);
     }
 }

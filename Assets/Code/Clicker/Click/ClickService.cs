@@ -8,7 +8,9 @@ namespace Code.Clicker
     {
         [SerializeField] private LayerMask _clickableLayer;
         [SerializeField][Range(0f, 500f)] private float _raycastLenght = 10f;
-
+        
+        [Inject] private ClickerEvents _events;
+        
         private readonly RaycastHit[] _clickCheckResults = new RaycastHit[1];
         private Camera _camera;
         
@@ -32,9 +34,15 @@ namespace Code.Clicker
             if (findedObjectsCount == 0)
                 return false;
 
-            var potentialClickableObject = _clickCheckResults[0].collider;
-            
-            return potentialClickableObject.TryGetComponent<IClickable>(out clickableObject);
+            var potentialClickableObject = _clickCheckResults[0];
+
+            if (potentialClickableObject.collider.TryGetComponent<IClickable>(out clickableObject))
+            {
+                _events.CallClickableClicked(potentialClickableObject.point, clickableObject);
+                return true;
+            }
+
+            return false;
         }
     }
 }

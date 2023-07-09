@@ -7,7 +7,6 @@ namespace Code.Clicker
     {
         [SerializeField] private int _coinsValuable = 1;
         [SerializeField] private BoxCollider _coinsCreateArea;
-        
         [Inject] private ClickerEvents _clickerEvents;
         
         [ContextMenu("React")]

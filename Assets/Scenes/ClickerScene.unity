@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 174973687}
   - component: {fileID: 174973689}
   - component: {fileID: 174973688}
+  - component: {fileID: 174973690}
   m_Layer: 0
   m_Name: Clicker
   m_TagString: Untagged
@@ -303,6 +304,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickService: {fileID: 174973688}
+  _clickEffect: {fileID: 174973690}
+--- !u!114 &174973690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174973686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4746227e24848a597901bfdab3353f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236119407
 GameObject:
   m_ObjectHideFlags: 0

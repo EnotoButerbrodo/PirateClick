@@ -140,6 +140,7 @@ MonoBehaviour:
   _coinsCreateArea: {fileID: 1173004820330410633}
   _animator: {fileID: 3564329345568922938}
   chestMaterialProvider: {fileID: 5513267727554433673}
+  _chestCollider: {fileID: 7582677927539423341}
 --- !u!114 &3564329345568922938
 MonoBehaviour:
   m_ObjectHideFlags: 0
