@@ -614,7 +614,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   _coinPrefab: {fileID: 2308669536877470637, guid: ad803d6296152bb46996654baeffb8be, type: 3}
   _coinPickupPosition: {fileID: 1875117093}
   _coinSpeed: 2.5
-  _smallerDistance: 0.2
+  _smallerDistance: 0.25
   _smallerSpeed: 0.1
   _pickupAudio: {fileID: 8300000, guid: 462adf16e29c84c4ea48e209f0049c91, type: 3}
 --- !u!1 &1687226396

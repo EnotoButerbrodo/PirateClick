@@ -65,7 +65,7 @@ namespace Code.Clicker
                 if (distanceToTarget <= _smallerDistance)
                 {
                     coin.transform
-                        .DOScale(Vector3.one * 0.1f, _smallerSpeed)
+                        .DOScale(Vector3.zero, _smallerSpeed)
                         .SetLink(coin.gameObject);
                 }
                 if (distanceToTarget <= 0.1f)
@@ -96,7 +96,7 @@ namespace Code.Clicker
         private void OnCoinPickup(GameObject coin)
         {
             _clickerEvents.CallCoinPicked();
-            _audio.Play(_pickupAudio);
+            _audio.Play(_pickupAudio, 0.5f);
             _wallet.Add(1);
             
             Destroy(coin);

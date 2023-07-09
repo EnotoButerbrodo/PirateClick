@@ -6,9 +6,9 @@ namespace Services
     {
         [SerializeField] private AudioSource _source;
         
-        public void Play(AudioClip clip)
+        public void Play(AudioClip clip, float volume = 1f)
         {
-            _source.PlayOneShot(clip); 
+            _source.PlayOneShot(clip, volume); 
         }
     }
 }
