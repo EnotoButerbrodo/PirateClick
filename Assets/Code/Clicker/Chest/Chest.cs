@@ -9,9 +9,9 @@ namespace Code.Clicker
     {
         [SerializeField] private ChestAnimator _animator;
         [SerializeField] private ChestMaterialProvider chestMaterialProvider;
-        
-        
+
         private Coroutine _selectReactionCoroutine;
+        
 
         protected override void OnReact()
         {

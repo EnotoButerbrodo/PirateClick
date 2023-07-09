@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5442582108183636105}
   - component: {fileID: 5001956247563321885}
   - component: {fileID: 3564329345568922938}
+  - component: {fileID: 5121208896822585791}
   - component: {fileID: 5513267727554433673}
   - component: {fileID: 3633688209402567273}
   - component: {fileID: 7582677927539423341}
@@ -139,6 +140,7 @@ MonoBehaviour:
   _coinsCreateArea: {fileID: 1173004820330410633}
   _animator: {fileID: 3564329345568922938}
   chestMaterialProvider: {fileID: 5513267727554433673}
+  _chestCollider: {fileID: 7582677927539423341}
 --- !u!114 &3564329345568922938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +156,19 @@ MonoBehaviour:
   _animator: {fileID: 3633688209402567273}
   _clickBoolName: Click
   _clickAnimationCancelTime: 0.25
+--- !u!114 &5121208896822585791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638537012494097173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66790b2934648e9aac3266847764c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _landClip: {fileID: 8300000, guid: 75f5172224fd2b34aa632275585a04cb, type: 3}
 --- !u!114 &5513267727554433673
 MonoBehaviour:
   m_ObjectHideFlags: 0

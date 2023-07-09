@@ -1,16 +1,21 @@
 ﻿using Code.Clicker;
 using Code.Services.InputService;
+using Services;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastucture
 {
-    public class ServiceInstaller : MonoInstaller 
+    public class ServiceInstaller : MonoInstaller
     {
+        [SerializeField] private AudioService _audio;
+        
         public override void InstallBindings()
         {
             BindInputService();
             BindWallet();
             BindClickerEvents();
+            BindAudioService();
         }
 
         private void BindInputService()
@@ -36,6 +41,18 @@ namespace Code.Infrastucture
             Container
                 .Bind<ClickerEvents>()
                 .FromNew()
+                .AsSingle();
+        }
+
+        private void BindAudioService()
+        {
+            var audioSource = Container
+                .InstantiatePrefabForComponent<AudioService>(_audio);
+
+            Container
+                .Bind<IAudioService>()
+                .To<AudioService>()
+                .FromInstance(audioSource)
                 .AsSingle();
         }
     }

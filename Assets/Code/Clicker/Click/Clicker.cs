@@ -1,4 +1,5 @@
-﻿using Code.Services.InputService;
+﻿using System;
+using Code.Services.InputService;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace Code.Clicker
     public class Clicker : MonoBehaviour
     {
         [SerializeField] private ClickService _clickService;
-        
+
         [Inject] private IInputService _inputService;
 
         private void OnEnable()
