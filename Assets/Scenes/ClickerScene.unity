@@ -304,7 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickService: {fileID: 174973688}
-  _clickEffect: {fileID: 174973690}
 --- !u!114 &174973690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4746227e24848a597901bfdab3353f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particlePrefab: {fileID: 4190457466865377998, guid: c05dd673ccec04044bc4daad0e98b928, type: 3}
+  _clickClip: {fileID: 8300000, guid: 99c081dab6f7dd04dbefe02b78117c49, type: 3}
 --- !u!1 &236119407
 GameObject:
   m_ObjectHideFlags: 0
