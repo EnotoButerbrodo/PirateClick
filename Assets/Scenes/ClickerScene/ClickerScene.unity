@@ -1156,6 +1156,7 @@ GameObject:
   - component: {fileID: 1346931371}
   - component: {fileID: 1346931372}
   - component: {fileID: 1346931373}
+  - component: {fileID: 1346931374}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -1212,12 +1213,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f13aa90898d48399ffbf4e9ec73db69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 2308669536877470637, guid: ad803d6296152bb46996654baeffb8be, type: 3}
+  _coinFactory: {fileID: 1346931374}
   _coinPickupPosition: {fileID: 708095990}
   _coinSpeed: 2.5
   _smallerDistance: 0.25
   _smallerSpeed: 0.1
   _pickupAudio: {fileID: 8300000, guid: 462adf16e29c84c4ea48e209f0049c91, type: 3}
+--- !u!114 &1346931374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346931370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92733afdc0e14074873f6360d1c032b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 3228852703680688529, guid: ad803d6296152bb46996654baeffb8be, type: 3}
 --- !u!1 &1687226396
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,10 +11,10 @@ namespace Code.Clicker
         public void CallCoinEarned(Vector3 earnPosition) 
             => CoinEarned?.Invoke(earnPosition);
 
-        public event Action CoinPicked;
+        public event Action<Coin> CoinPicked;
         
-        public void CallCoinPicked()
-            => CoinPicked?.Invoke();
+        public void CallCoinPicked(Coin coin)
+            => CoinPicked?.Invoke(coin);
         
         public delegate void ClickableClickDelegate(Vector3 clickWorldPosition, IClickable clickable);
 
