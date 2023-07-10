@@ -7,9 +7,18 @@
             "actions": [
                 {
                     "name": "ScreenTouch",
-                    "type": "Value",
+                    "type": "Button",
+                    "id": "63a7e504-8e51-4609-9779-15d32e1c6759",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ScreenTouchPosition",
+                    "type": "PassThrough",
                     "id": "f1a5cf0d-d646-45b6-9c9f-2606a943a71d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -66,11 +75,11 @@
                 {
                     "name": "",
                     "id": "d5ea8b54-e0d8-4297-9cc0-b57fbf47610e",
-                    "path": "<Touchscreen>/touch0/position",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Touchscreen",
-                    "action": "ScreenTouch",
+                    "action": "ScreenTouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -98,12 +107,45 @@
                 },
                 {
                     "name": "",
+                    "id": "eb1067aa-45de-4dd4-b176-81b74ee73cb8",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touchscreen",
+                    "action": "CameraDragInitial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "eb03c4c8-157f-48d7-81f8-59b4c461fae1",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "CameraDragDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "427f25d1-e7d1-40ee-97e8-9c8af045f373",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraDragDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6fad636-4e26-401e-b03f-5f85414ecf60",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touchscreen",
+                    "action": "ScreenTouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

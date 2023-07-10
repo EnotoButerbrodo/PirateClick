@@ -29,9 +29,18 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""ScreenTouch"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
+                    ""id"": ""63a7e504-8e51-4609-9779-15d32e1c6759"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScreenTouchPosition"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f1a5cf0d-d646-45b6-9c9f-2606a943a71d"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -88,11 +97,11 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d5ea8b54-e0d8-4297-9cc0-b57fbf47610e"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touchscreen"",
-                    ""action"": ""ScreenTouch"",
+                    ""action"": ""ScreenTouchPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -120,12 +129,45 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""eb1067aa-45de-4dd4-b176-81b74ee73cb8"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""CameraDragInitial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""eb03c4c8-157f-48d7-81f8-59b4c461fae1"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CameraDragDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""427f25d1-e7d1-40ee-97e8-9c8af045f373"",
+                    ""path"": ""<Touchscreen>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraDragDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6fad636-4e26-401e-b03f-5f85414ecf60"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""ScreenTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -160,6 +202,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         // Clicker
         m_Clicker = asset.FindActionMap("Clicker", throwIfNotFound: true);
         m_Clicker_ScreenTouch = m_Clicker.FindAction("ScreenTouch", throwIfNotFound: true);
+        m_Clicker_ScreenTouchPosition = m_Clicker.FindAction("ScreenTouchPosition", throwIfNotFound: true);
         m_Clicker_MouseClick = m_Clicker.FindAction("MouseClick", throwIfNotFound: true);
         m_Clicker_MousePosition = m_Clicker.FindAction("MousePosition", throwIfNotFound: true);
         m_Clicker_CameraDragInitial = m_Clicker.FindAction("CameraDragInitial", throwIfNotFound: true);
@@ -226,6 +269,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Clicker;
     private List<IClickerActions> m_ClickerActionsCallbackInterfaces = new List<IClickerActions>();
     private readonly InputAction m_Clicker_ScreenTouch;
+    private readonly InputAction m_Clicker_ScreenTouchPosition;
     private readonly InputAction m_Clicker_MouseClick;
     private readonly InputAction m_Clicker_MousePosition;
     private readonly InputAction m_Clicker_CameraDragInitial;
@@ -235,6 +279,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         private @InputScheme m_Wrapper;
         public ClickerActions(@InputScheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @ScreenTouch => m_Wrapper.m_Clicker_ScreenTouch;
+        public InputAction @ScreenTouchPosition => m_Wrapper.m_Clicker_ScreenTouchPosition;
         public InputAction @MouseClick => m_Wrapper.m_Clicker_MouseClick;
         public InputAction @MousePosition => m_Wrapper.m_Clicker_MousePosition;
         public InputAction @CameraDragInitial => m_Wrapper.m_Clicker_CameraDragInitial;
@@ -251,6 +296,9 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @ScreenTouch.started += instance.OnScreenTouch;
             @ScreenTouch.performed += instance.OnScreenTouch;
             @ScreenTouch.canceled += instance.OnScreenTouch;
+            @ScreenTouchPosition.started += instance.OnScreenTouchPosition;
+            @ScreenTouchPosition.performed += instance.OnScreenTouchPosition;
+            @ScreenTouchPosition.canceled += instance.OnScreenTouchPosition;
             @MouseClick.started += instance.OnMouseClick;
             @MouseClick.performed += instance.OnMouseClick;
             @MouseClick.canceled += instance.OnMouseClick;
@@ -270,6 +318,9 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @ScreenTouch.started -= instance.OnScreenTouch;
             @ScreenTouch.performed -= instance.OnScreenTouch;
             @ScreenTouch.canceled -= instance.OnScreenTouch;
+            @ScreenTouchPosition.started -= instance.OnScreenTouchPosition;
+            @ScreenTouchPosition.performed -= instance.OnScreenTouchPosition;
+            @ScreenTouchPosition.canceled -= instance.OnScreenTouchPosition;
             @MouseClick.started -= instance.OnMouseClick;
             @MouseClick.performed -= instance.OnMouseClick;
             @MouseClick.canceled -= instance.OnMouseClick;
@@ -320,6 +371,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
     public interface IClickerActions
     {
         void OnScreenTouch(InputAction.CallbackContext context);
+        void OnScreenTouchPosition(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnCameraDragInitial(InputAction.CallbackContext context);
