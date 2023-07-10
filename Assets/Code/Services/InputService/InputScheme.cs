@@ -53,6 +53,24 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraDragInitial"",
+                    ""type"": ""Button"",
+                    ""id"": ""a373a69b-ffed-480b-ba45-d16d37c93514"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraDragDelta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1aea882f-2bf8-4f30-9161-120821e8b415"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -86,6 +104,28 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fc0d091-a1df-4293-ad5c-11971616cf4a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraDragInitial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb03c4c8-157f-48d7-81f8-59b4c461fae1"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraDragDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -122,6 +162,8 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         m_Clicker_ScreenTouch = m_Clicker.FindAction("ScreenTouch", throwIfNotFound: true);
         m_Clicker_MouseClick = m_Clicker.FindAction("MouseClick", throwIfNotFound: true);
         m_Clicker_MousePosition = m_Clicker.FindAction("MousePosition", throwIfNotFound: true);
+        m_Clicker_CameraDragInitial = m_Clicker.FindAction("CameraDragInitial", throwIfNotFound: true);
+        m_Clicker_CameraDragDelta = m_Clicker.FindAction("CameraDragDelta", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -186,6 +228,8 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
     private readonly InputAction m_Clicker_ScreenTouch;
     private readonly InputAction m_Clicker_MouseClick;
     private readonly InputAction m_Clicker_MousePosition;
+    private readonly InputAction m_Clicker_CameraDragInitial;
+    private readonly InputAction m_Clicker_CameraDragDelta;
     public struct ClickerActions
     {
         private @InputScheme m_Wrapper;
@@ -193,6 +237,8 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         public InputAction @ScreenTouch => m_Wrapper.m_Clicker_ScreenTouch;
         public InputAction @MouseClick => m_Wrapper.m_Clicker_MouseClick;
         public InputAction @MousePosition => m_Wrapper.m_Clicker_MousePosition;
+        public InputAction @CameraDragInitial => m_Wrapper.m_Clicker_CameraDragInitial;
+        public InputAction @CameraDragDelta => m_Wrapper.m_Clicker_CameraDragDelta;
         public InputActionMap Get() { return m_Wrapper.m_Clicker; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +257,12 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @CameraDragInitial.started += instance.OnCameraDragInitial;
+            @CameraDragInitial.performed += instance.OnCameraDragInitial;
+            @CameraDragInitial.canceled += instance.OnCameraDragInitial;
+            @CameraDragDelta.started += instance.OnCameraDragDelta;
+            @CameraDragDelta.performed += instance.OnCameraDragDelta;
+            @CameraDragDelta.canceled += instance.OnCameraDragDelta;
         }
 
         private void UnregisterCallbacks(IClickerActions instance)
@@ -224,6 +276,12 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @CameraDragInitial.started -= instance.OnCameraDragInitial;
+            @CameraDragInitial.performed -= instance.OnCameraDragInitial;
+            @CameraDragInitial.canceled -= instance.OnCameraDragInitial;
+            @CameraDragDelta.started -= instance.OnCameraDragDelta;
+            @CameraDragDelta.performed -= instance.OnCameraDragDelta;
+            @CameraDragDelta.canceled -= instance.OnCameraDragDelta;
         }
 
         public void RemoveCallbacks(IClickerActions instance)
@@ -264,5 +322,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
         void OnScreenTouch(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnCameraDragInitial(InputAction.CallbackContext context);
+        void OnCameraDragDelta(InputAction.CallbackContext context);
     }
 }
