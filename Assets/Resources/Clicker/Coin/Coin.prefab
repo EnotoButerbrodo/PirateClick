@@ -49,7 +49,7 @@ MonoBehaviour:
   StartSpeed: 1
   AccelerationPerSecond: 2
   RotationSpeed: 300
-  _smallerDistance: 0.25
+  _smallerDistance: 0.2
   _smallerSpeed: 0.1
   _rigidbody: {fileID: 7672257149653948718}
 --- !u!54 &7672257149653948718
