@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +9,12 @@ namespace Code.Services.InputService
     {
         public event Action<Vector2> ScreenTouch;
         public event Action<Vector2> CameraDrag;
+        public event Action CameraRotationBreak;
+
 
         private InputScheme _input;
         private bool _dragInital;
+
 
         public void SetEnabled(bool isEnabled)
         {
@@ -27,21 +31,31 @@ namespace Code.Services.InputService
             _input.Clicker.ScreenTouch.performed += OnScreenTouch;
             _input.Clicker.MouseClick.started += OnMouse;
 
-            _input.Clicker.CameraDragInitial.performed += (c) => _dragInital = true;
-            _input.Clicker.CameraDragInitial.canceled += (c) => _dragInital = false;
+            _input.Clicker.CameraDragInitial.performed += EnableCameraDrag;
+            _input.Clicker.CameraDragInitial.canceled += DisableCameraDrag;
+            
             _input.Clicker.CameraDragDelta.performed += UpdateCameraDrag;
+
+            _input.Clicker.CameraDragInitial.performed += UpdateCameraBreak;
         }
+
+        private void UpdateCameraBreak(InputAction.CallbackContext obj)
+            => CameraRotationBreak?.Invoke();
 
         private void UpdateCameraDrag(InputAction.CallbackContext obj)
         {
-            if(_dragInital == false)
-                return;
-            
-            var mouseDrag = _input.Clicker.CameraDragDelta.ReadValue<Vector2>();
-            CameraDrag?.Invoke(mouseDrag);
-            Debug.Log("Rotation " + mouseDrag);
+            var drag = _dragInital
+                ? _input.Clicker.CameraDragDelta.ReadValue<Vector2>()
+                : Vector2.zero;
 
+            CameraDrag?.Invoke(drag);
         }
+
+        private void DisableCameraDrag(InputAction.CallbackContext obj) 
+            => _dragInital = false;
+
+        private void EnableCameraDrag(InputAction.CallbackContext obj) 
+            => _dragInital = true;
 
         private void OnMouse(InputAction.CallbackContext obj)
         {
