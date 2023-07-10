@@ -69,7 +69,7 @@ public partial class @InputScheme: IInputActionCollection2, IDisposable
                     ""id"": ""a373a69b-ffed-480b-ba45-d16d37c93514"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""interactions"": ""Hold(duration=0.2)"",
                     ""initialStateCheck"": false
                 },
                 {

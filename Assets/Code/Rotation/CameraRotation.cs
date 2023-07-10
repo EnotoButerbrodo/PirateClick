@@ -48,7 +48,7 @@ namespace Code.Levels.Clicker
                 return;
             
             var rotationOffset = normalizedDrag * Time.deltaTime * _sensivity;
-            _rigidbody.AddTorque(Vector3.up * rotationOffset, ForceMode.VelocityChange);
+            _rigidbody.AddTorque(Vector3.up * rotationOffset, ForceMode.VelocityChange);  
         }
     }
 }
