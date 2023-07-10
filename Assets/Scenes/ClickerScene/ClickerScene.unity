@@ -975,10 +975,10 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 2
-  m_AngularDrag: 0.25
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1016797936
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinFactory: {fileID: 1346931374}
-  _coinPickupPosition: {fileID: 708095990}
+  _coinPickupPosition: {fileID: 1875117093}
   _pickupAudio: {fileID: 8300000, guid: 462adf16e29c84c4ea48e209f0049c91, type: 3}
 --- !u!114 &1346931374
 MonoBehaviour:
@@ -1309,7 +1309,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 200}
-  m_Pivot: {x: 0.4, y: 1}
+  m_Pivot: {x: 0.5, y: 0.8}
 --- !u!1001 &393975034283476407
 PrefabInstance:
   m_ObjectHideFlags: 0

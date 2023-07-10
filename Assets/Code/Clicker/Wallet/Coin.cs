@@ -8,6 +8,7 @@ namespace Code.Clicker
     {
         public float StartSpeed = 2.5f;
         public float AccelerationPerSecond = 1f;
+        public float RotationSpeed = 300f;
         
         [SerializeField] private float _smallerDistance = 0.1f;
         [SerializeField] private float _smallerSpeed = 0.5f;
@@ -49,12 +50,13 @@ namespace Code.Clicker
                     .DOScale(Vector3.zero, _smallerSpeed)
                     .SetLink(gameObject);
             }
-            if (distanceToTarget <= 0.1f)
+            if (distanceToTarget <= 0.05f)
             {
                 Pickuped();
             }
 
             _speed += AccelerationPerSecond * Time.deltaTime;
+            _rigidbody.AddTorque(transform.up * RotationSpeed * Time.deltaTime);
         }
 
         private void Pickuped()
