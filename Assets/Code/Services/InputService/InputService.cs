@@ -9,10 +9,14 @@ namespace Code.Services.InputService
     {
         public event Action<Vector2> ScreenTouch;
         public event Action<Vector2> CameraDrag;
-        public event Action CameraRotationBreak;
 
+
+        public bool CameraDragButtonPressed
+            => _input.Clicker.CameraDragInitial.IsPressed();
+        
 
         private InputScheme _input;
+
         private bool _dragInital;
 
 
@@ -35,12 +39,9 @@ namespace Code.Services.InputService
             _input.Clicker.CameraDragInitial.canceled += DisableCameraDrag;
             
             _input.Clicker.CameraDragDelta.performed += UpdateCameraDrag;
-
-            _input.Clicker.CameraDragInitial.performed += UpdateCameraBreak;
         }
 
-        private void UpdateCameraBreak(InputAction.CallbackContext obj)
-            => CameraRotationBreak?.Invoke();
+  
 
         private void UpdateCameraDrag(InputAction.CallbackContext obj)
         {

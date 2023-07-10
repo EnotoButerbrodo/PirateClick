@@ -26,15 +26,13 @@ namespace Code.Levels.Clicker
         private void OnEnable()
         {
             _input.CameraDrag += RotateCamera;
-            _input.CameraRotationBreak += HandleRotationBreak;
         }
 
-        private void HandleRotationBreak()
+        private void Update()
         {
-            if (_rigidbody.angularVelocity.y != 0)
-            {
-                _rigidbody.angularDrag = _brakeForce;
-            }
+            _rigidbody.angularDrag = _input.CameraDragButtonPressed
+                ? _brakeForce
+                : _defaultDrag;
         }
 
         private void OnDisable()
@@ -49,7 +47,6 @@ namespace Code.Levels.Clicker
             if(Mathf.Abs(normalizedDrag) <= _rotationDeadZone)
                 return;
             
-            _rigidbody.angularDrag = _defaultDrag;
             var rotationOffset = normalizedDrag * Time.deltaTime * _sensivity;
             _rigidbody.AddTorque(Vector3.up * rotationOffset, ForceMode.VelocityChange);
         }

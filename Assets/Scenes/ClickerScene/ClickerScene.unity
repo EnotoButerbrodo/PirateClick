@@ -975,7 +975,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 2
-  m_AngularDrag: 0.5
+  m_AngularDrag: 0.25
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1215,9 +1215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinFactory: {fileID: 1346931374}
   _coinPickupPosition: {fileID: 708095990}
-  _coinSpeed: 2.5
-  _smallerDistance: 0.25
-  _smallerSpeed: 0.1
   _pickupAudio: {fileID: 8300000, guid: 462adf16e29c84c4ea48e209f0049c91, type: 3}
 --- !u!114 &1346931374
 MonoBehaviour:
