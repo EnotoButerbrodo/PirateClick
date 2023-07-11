@@ -1925,7 +1925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ef707c4c7d4792a735bc2b74cc7f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sensivity: 10000
+  _sensivity: 20000
   _rotationDeadZone: 0.00075
   _brakeForce: 10
   _rigidbody: {fileID: 952737984}
@@ -1939,7 +1939,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 2
-  m_AngularDrag: 0.5
+  m_AngularDrag: 3
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
