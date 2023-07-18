@@ -2837,7 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 708095991}
   _pickupColor: {r: 1, g: 0.7666348, b: 0, a: 1}
-  _reduceTickDelay: 0.1
+  _reduceTickDelay: 0.2
 --- !u!114 &1346931373
 MonoBehaviour:
   m_ObjectHideFlags: 0

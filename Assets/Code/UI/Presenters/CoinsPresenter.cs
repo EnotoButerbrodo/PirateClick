@@ -64,7 +64,7 @@ namespace Code.UI.Presenters
             
             _currentSequence = DOTween.Sequence()
                 .Append(_text.transform.DOScale(endValue: Vector3.one * 0.8f
-                    , duration: 0.1f))
+                    , duration: 0.05f))
                 .Append(DOTween.To
                 (
                     ()=> Moneys
@@ -73,7 +73,7 @@ namespace Code.UI.Presenters
                     , _reduceTickDelay
                 ))
                 .Append(_text.transform.DOScale(endValue: Vector3.one
-                    , duration: 0.1f));
+                    , duration: 0.2f));
         }
         
 
