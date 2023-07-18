@@ -7,6 +7,8 @@ namespace Code.Clicker
 {
     public class LockedObject : MonoBehaviour, ILockedObject, IClickable
     {
+        public event Action Unlocked;
+        public event Action FailedUnlock;
         [field: SerializeField] public int Cost { get; private set; } = 50;
         [SerializeField] private ValuableType _type;
 
@@ -19,8 +21,13 @@ namespace Code.Clicker
             if (_wallet.TrySpend(Cost))
             {
                 var valuable = _factory.Get(_type, transform.position, transform.rotation);
+                
+                Unlocked?.Invoke();
                 Destroy(gameObject);
+                return;
             }
+            
+            FailedUnlock?.Invoke();
         }
 
         public void React()
