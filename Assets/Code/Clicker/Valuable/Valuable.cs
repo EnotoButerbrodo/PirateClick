@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using NaughtyAttributes;
+using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Code.Clicker
 {
@@ -8,13 +11,21 @@ namespace Code.Clicker
         [SerializeField] private int _coinsValuable = 1;
         [SerializeField] private BoxCollider _coinsCreateArea;
         [Inject] private ClickerEvents _clickerEvents;
-        
-        [ContextMenu("React")]
+
+
+        private void Start()
+        {
+            OnSpawn();   
+        }
+
+        [Button()]
         public void React()
         {
             CallCoinsEarned();
             OnReact();
         }
+
+        public abstract void OnSpawn(); 
         
         private void CallCoinsEarned()
         {
