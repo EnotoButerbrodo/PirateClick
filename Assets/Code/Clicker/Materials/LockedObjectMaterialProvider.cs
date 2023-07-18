@@ -22,7 +22,7 @@ namespace Code.Clicker
         {
             _material = _renderer.sharedMaterial;
         }
-
+    
         public void Unlock()
         {
             Opacity = 1f;
