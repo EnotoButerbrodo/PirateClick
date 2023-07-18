@@ -2,7 +2,7 @@
 {
     public interface ILockedObject
     {
-        public void Lock();
+        public int Cost { get; }
         public void Unlock();
     }
 }

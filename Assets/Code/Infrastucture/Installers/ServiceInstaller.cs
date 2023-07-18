@@ -9,13 +9,14 @@ namespace Code.Infrastucture
     public class ServiceInstaller : MonoInstaller
     {
         [SerializeField] private AudioService _audio;
-        
+        [SerializeField] private ValuableFactory _valuableFactory;
         public override void InstallBindings()
         {
             BindInputService();
             BindWallet();
             BindClickerEvents();
             BindAudioService();
+            BindValiableFactory();
         }
 
         private void BindInputService()
@@ -53,6 +54,18 @@ namespace Code.Infrastucture
                 .Bind<IAudioService>()
                 .To<AudioService>()
                 .FromInstance(audioSource)
+                .AsSingle();
+        }
+
+        private void BindValiableFactory()
+        {
+            var factory = Container
+                .InstantiatePrefabForComponent<ValuableFactory>(_valuableFactory);
+
+            Container
+                .Bind<IValuableFactory>()
+                .To<ValuableFactory>()
+                .FromInstance(factory)
                 .AsSingle();
         }
     }

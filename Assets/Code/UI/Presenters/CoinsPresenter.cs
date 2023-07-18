@@ -1,5 +1,4 @@
-﻿using System;
-using Code.Clicker;
+﻿using Code.Clicker;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
