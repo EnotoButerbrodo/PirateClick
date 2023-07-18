@@ -324,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
       propertyPath: <Cost>k__BackingField
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
@@ -2837,6 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 708095991}
   _pickupColor: {r: 1, g: 0.7666348, b: 0, a: 1}
+  _reduceTickDelay: 0.1
 --- !u!114 &1346931373
 MonoBehaviour:
   m_ObjectHideFlags: 0

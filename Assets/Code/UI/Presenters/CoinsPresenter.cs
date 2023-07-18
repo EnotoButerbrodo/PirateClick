@@ -1,5 +1,8 @@
-﻿using Code.Clicker;
+﻿using System.Collections;
+using Code.Clicker;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -10,11 +13,25 @@ namespace Code.UI.Presenters
     {
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Color _pickupColor;
-        private Color _defaultColor;
+        [SerializeField] private float _reduceTickDelay = 0.1f;
 
         [Inject] private IWallet _wallet;
 
+        private Color _defaultColor;
+        private int _currentMoney;
+
         private Sequence _currentSequence;
+        private TweenerCore<int, int, NoOptions> _reduceTween;
+
+        private int Moneys
+        {
+            get => _currentMoney;
+            set
+            {
+                _currentMoney = value;
+                _text.SetText("{0}", _currentMoney);
+            }
+        }
 
         private void OnEnable()
         {
@@ -29,13 +46,40 @@ namespace Code.UI.Presenters
 
         private void UpdateCoinsText(int newValue)
         {
-            _text.SetText("{0}", newValue);
-            PlayAnimation();
+            var difference = newValue - Moneys;
+            if (difference > 0)
+            {
+                Moneys = newValue;
+                PlayRaiseAnimation();    
+            }
+            else
+            {
+                PlayReductionAnimation(newValue);
+            }
         }
 
-        private void PlayAnimation()
+        private void PlayReductionAnimation(int reducedValue)
         {
-            _currentSequence?.Restart();
+            _currentSequence?.Kill();
+            
+            _currentSequence = DOTween.Sequence()
+                .Append(_text.transform.DOScale(endValue: Vector3.one * 0.8f
+                    , duration: 0.1f))
+                .Append(DOTween.To
+                (
+                    ()=> Moneys
+                    , x => Moneys = x
+                    , reducedValue
+                    , _reduceTickDelay
+                ))
+                .Append(_text.transform.DOScale(endValue: Vector3.one
+                    , duration: 0.1f));
+        }
+        
+
+        private void PlayRaiseAnimation()
+        {
+            _currentSequence?.Kill();
 
             _currentSequence = DOTween.Sequence()
                 .Append(_text.transform.DOScale(endValue: Vector3.one * 1.1f

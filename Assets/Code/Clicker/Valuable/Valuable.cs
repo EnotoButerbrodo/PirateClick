@@ -25,7 +25,7 @@ namespace Code.Clicker
             OnReact();
         }
 
-        public abstract void OnSpawn(); 
+        protected abstract void OnSpawn(); 
         
         private void CallCoinsEarned()
         {

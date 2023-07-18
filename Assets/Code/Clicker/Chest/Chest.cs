@@ -13,7 +13,7 @@ namespace Code.Clicker
         private Coroutine _selectReactionCoroutine;
 
 
-        public override void OnSpawn()
+        protected override void OnSpawn()
         {
             _animator.PlaySpawnAnimation();
         }
