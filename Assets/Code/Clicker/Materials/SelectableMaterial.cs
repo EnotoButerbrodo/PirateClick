@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Clicker
 {
-    public class ChestMaterialProvider : MonoBehaviour
+    public class SelectableMaterial : MonoBehaviour
     {
         [SerializeField] private List<SelectableMaterialProvider> _materials;
 

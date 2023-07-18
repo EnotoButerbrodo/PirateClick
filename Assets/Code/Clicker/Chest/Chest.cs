@@ -8,7 +8,7 @@ namespace Code.Clicker
     public class Chest : Valuable
     {
         [SerializeField] private ChestAnimator _animator;
-        [SerializeField] private ChestMaterialProvider chestMaterialProvider;
+        [FormerlySerializedAs("chestMaterialProvider")] [SerializeField] private SelectableMaterial selectableMaterial;
 
         private Coroutine _selectReactionCoroutine;
         
@@ -25,9 +25,9 @@ namespace Code.Clicker
 
         private IEnumerator SelectReaction()
         {
-            chestMaterialProvider.SetSelected();
+            selectableMaterial.SetSelected();
             yield return new WaitForSeconds(0.1f);
-            chestMaterialProvider.SetDeselected();
+            selectableMaterial.SetDeselected();
         }
     }
 }
