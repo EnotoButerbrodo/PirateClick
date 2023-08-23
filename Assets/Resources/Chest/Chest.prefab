@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9490197, b: 0, a: 0.78431374}
+  m_Color: {r: 1, g: 0.9490197, b: 0, a: 0.5882353}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.78431374}
+  m_Color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.5882353}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 7089329263528928291}
   - component: {fileID: 1593921040818938232}
   - component: {fileID: 3369080362414064698}
+  - component: {fileID: 1972985654732444008}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -819,7 +820,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 16841145166083665}
   m_Father: {fileID: 5442582108183636105}
@@ -844,6 +845,7 @@ MonoBehaviour:
   _valuable: {fileID: 5001956247563321885}
   _coinsReloadBar: {fileID: 7817286770383208018}
   _availableCoins: {fileID: 8478893088334693587}
+  _spawnAnimation: {fileID: 1972985654732444008}
 --- !u!223 &7089329263528928291
 Canvas:
   m_ObjectHideFlags: 0
@@ -907,6 +909,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!111 &1972985654732444008
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185732130793220055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e7c5ca4a28dbf7e4a8098d1af37901a1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e7c5ca4a28dbf7e4a8098d1af37901a1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &3771942525862986080
 PrefabInstance:
   m_ObjectHideFlags: 0

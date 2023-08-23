@@ -10,10 +10,15 @@ namespace Code.Clicker.HUD
         [SerializeField] private Valuable _valuable;
         [SerializeField] private ReloadBar _coinsReloadBar;
         [SerializeField] private TextMeshProUGUI _availableCoins;
-        
+        [SerializeField] private Animation _spawnAnimation;
 
         public ReloadBar CoinsReloadBar => _coinsReloadBar;
 
+        public void Spawn()
+        {
+            _spawnAnimation.Play();
+        }
+        
         private void OnEnable()
         {
             _valuable.AvailableCoinsChanged += OnCoinsChanged;

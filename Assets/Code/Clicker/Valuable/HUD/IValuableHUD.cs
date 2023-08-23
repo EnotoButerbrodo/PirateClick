@@ -3,5 +3,6 @@
     public interface IValuableHUD
     {
         public ReloadBar CoinsReloadBar { get; }
+        void Spawn();
     }
 }

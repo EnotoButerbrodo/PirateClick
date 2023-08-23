@@ -19,6 +19,6 @@ namespace Code.Clicker
                 , _valuableHUD);
 
         public ValuableState GetSpawnState(ValuableStateMachine context) 
-            => new SpawnedState(context);
+            => new SpawnedState(context, _valuableHUD);
     }
 }
