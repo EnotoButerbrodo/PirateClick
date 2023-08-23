@@ -8,8 +8,11 @@ namespace Code.Clicker
     public class ValuableStateMachine : MonoBehaviour
     {
         [SerializeField] private ValuableStateFactory _stateFactory;
+        
+        public ValuableState SpawnState { get; private set; }
         public ValuableState HasCoinsState { get; private set; }
         public ValuableState ReloadState { get; private set; }
+        
         [field: SerializeField] public Valuable Valuable { get; private set; }
         [field: SerializeField] public ValuableAnimator Animator { get; private set; }
         
@@ -18,6 +21,7 @@ namespace Code.Clicker
         
         private void Awake()
         {
+            SpawnState = _stateFactory.GetSpawnState(this);
             HasCoinsState = _stateFactory.GetHasCoinsState(this);
             ReloadState = _stateFactory.GetReloadState(this);
         }
@@ -29,9 +33,9 @@ namespace Code.Clicker
             _currentState?.React();
         }
 
-        public void EnterDefaultState()
+        public void EnterFirstState()
         {
-            Enter(HasCoinsState);
+            Enter(SpawnState);
         }
         
         public void Enter(ValuableState state)

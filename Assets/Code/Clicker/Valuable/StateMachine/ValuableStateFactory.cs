@@ -13,5 +13,8 @@ namespace Code.Clicker
 
         public ValuableState GetReloadState(ValuableStateMachine context) 
             => new ReloadState(context, _container.Resolve<ITimersService>());
+
+        public ValuableState GetSpawnState(ValuableStateMachine context) 
+            => new SpawnedState(context);
     }
 }

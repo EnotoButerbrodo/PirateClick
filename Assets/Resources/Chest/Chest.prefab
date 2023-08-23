@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinsValuable: 1
-  MaxCoinsCount: 20
-  CoinsRefreshTime: 1
+  MaxCoinsCount: 10
+  CoinsRefreshTime: 5
   CoinsCount: 0
   _stateMachine: {fileID: 3411079997167327212}
 --- !u!114 &5121208896822585791
@@ -253,6 +253,7 @@ MonoBehaviour:
   _clickBoolName: Click
   _spawnName: Spawn
   _reloadingName: Reloading
+  _reloadClickName: ReloadClick
   _clickAnimationCancelTime: 0.1
   _materialAnimationTime: 0.1
 --- !u!95 &3633688209402567273

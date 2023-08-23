@@ -18,7 +18,7 @@ namespace Code.Clicker
 
         private void Start()
         {
-            _stateMachine.EnterDefaultState();
+            _stateMachine.EnterFirstState();
         }
 
         [Button()]
