@@ -8,7 +8,8 @@ namespace Code.Clicker
     public class Chest : Valuable
     {
         [SerializeField] private ValuableAnimator _animator;
-        [FormerlySerializedAs("chestMaterialProvider")] [SerializeField] private SelectableMaterial selectableMaterial;
+        [FormerlySerializedAs("chestMaterialProvider")] 
+        [SerializeField] private SelectableMaterial selectableMaterial;
 
         private Coroutine _selectReactionCoroutine;
 

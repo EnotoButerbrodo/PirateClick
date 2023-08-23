@@ -1,4 +1,5 @@
 ﻿using System;
+using EnotoButebrodo;
 using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
@@ -8,14 +9,24 @@ namespace Code.Clicker
 {
     public abstract class Valuable : MonoBehaviour, IClickable
     {
-        [SerializeField] private int _coinsValuable = 1;
+        public int CoinsValuable = 1;
+        public int CoinsMaxCount = 20;
+        public float CoinsRefreshTime = 1f;
         [SerializeField] private BoxCollider _coinsCreateArea;
+
         [Inject] private ClickerEvents _clickerEvents;
+        [Inject] private ITimersService _timersService;
 
-
+        private Timer _timer;
         private void Start()
         {
+            _timer = _timersService.GetTimer();
             OnSpawn();   
+        }
+
+        private void OnDestroy()
+        {
+            _timersService.DeleteTimer(_timer);
         }
 
         [Button()]
@@ -29,7 +40,7 @@ namespace Code.Clicker
         
         private void CallCoinsEarned()
         {
-            for (int i = 0; i < _coinsValuable; i++)
+            for (int i = 0; i < CoinsValuable; i++)
             {
                 _clickerEvents.CallCoinEarned(GetRandomCreatePoint());
             }

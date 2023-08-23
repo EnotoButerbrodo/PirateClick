@@ -1,5 +1,6 @@
 ﻿using Code.Clicker;
 using Code.Services.InputService;
+using EnotoButebrodo;
 using Services;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,16 @@ namespace Code.Infrastucture
             BindClickerEvents();
             BindAudioService();
             BindValiableFactory();
+            BindTimersService();
+        }
+
+        private void BindTimersService()
+        {
+            Container
+                .Bind<ITimersService>()
+                .To<TimersService>()
+                .FromNewComponentOnNewGameObject()
+                .AsSingle();
         }
 
         private void BindInputService()
