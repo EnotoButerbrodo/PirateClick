@@ -37,7 +37,7 @@ namespace Code.Clicker
 
         public override void React()
         {
-            Debug.Log("OnReload");
+            Animator.SetReloadClick();
         }
     }
 }

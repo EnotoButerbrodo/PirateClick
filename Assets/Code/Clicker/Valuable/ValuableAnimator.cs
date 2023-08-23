@@ -13,12 +13,14 @@ namespace Code.Clicker
         [SerializeField] private string _clickBoolName = "Click";
         [SerializeField] private string _spawnName = "Spawn";
         [SerializeField] private string _reloadingName = "Reloading";
+        [SerializeField] private string _reloadClickName = "ReloadClick";
         [SerializeField][Range(0f, 10f)] private float _clickAnimationCancelTime;
         [SerializeField][Range(0f, 10f)] private float _materialAnimationTime = 0.1f;
 
-        private int _clickHash;
-        private int _spawnHash;
-        private int _reloadingHash;
+        private int _click;
+        private int _spawn;
+        private int _reloading;
+        private int _reload;
 
         private Coroutine _clickAnimation;
 
@@ -34,14 +36,19 @@ namespace Code.Clicker
 
         public void SetReloading(bool state)
         {
-            _animator.SetBool(_reloadingHash, state);
+            _animator.SetBool(_reloading, state);
+        }
+
+        public void SetReloadClick()
+        {
+            _animator.SetTrigger(_reload);
         }
 
         private IEnumerator ClickAniamation()
         {
-            _animator.SetBool(_clickHash, true);
+            _animator.SetBool(_click, true);
             yield return new WaitForSeconds(_clickAnimationCancelTime);
-            _animator.SetBool(_clickHash, false);
+            _animator.SetBool(_click, false);
             
         }
 
@@ -54,7 +61,7 @@ namespace Code.Clicker
  
         public void PlaySpawnAnimation()
         {
-            _animator.SetTrigger(_spawnHash);
+            _animator.SetTrigger(_spawn);
         }
         
         
@@ -72,9 +79,10 @@ namespace Code.Clicker
 
         private void CalculateAnimationsHash()
         {
-            _clickHash = Animator.StringToHash(_clickBoolName);
-            _spawnHash = Animator.StringToHash(_spawnName);
-            _reloadingHash = Animator.StringToHash(_reloadingName);
+            _click = Animator.StringToHash(_clickBoolName);
+            _spawn = Animator.StringToHash(_spawnName);
+            _reloading = Animator.StringToHash(_reloadingName);
+            _reload = Animator.StringToHash(_reloadClickName);
         }
     }
 }
