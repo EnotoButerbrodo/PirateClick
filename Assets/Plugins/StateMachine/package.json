@@ -1,0 +1,8 @@
+{
+  "name": "com.enotobuterbrodo.statemachine",
+  "version": "1.0.0",
+  "displayName": "State Machine",
+  "description": "Simple state machine",
+  "unity": "2021.3",
+  "unityRelease": "9f1"
+ }
