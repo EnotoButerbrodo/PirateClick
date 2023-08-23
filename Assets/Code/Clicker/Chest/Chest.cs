@@ -7,21 +7,21 @@ namespace Code.Clicker
 {
     public class Chest : Valuable
     {
-        [SerializeField] private ValuableAnimator _animator;
+        [SerializeField] private ValuableAnimator animator;
         [FormerlySerializedAs("chestMaterialProvider")] 
         [SerializeField] private SelectableMaterial selectableMaterial;
 
         private Coroutine _selectReactionCoroutine;
 
 
-        protected override void OnSpawn()
+        protected void OnSpawn()
         {
-            _animator.PlaySpawnAnimation();
+            animator.PlaySpawnAnimation();
         }
 
-        protected override void OnReact()
+        protected void OnReact()
         {
-            _animator.StartClickAnimation();
+            animator.StartClickAnimation();
             
             if(_selectReactionCoroutine != null)
                 StopCoroutine(_selectReactionCoroutine);

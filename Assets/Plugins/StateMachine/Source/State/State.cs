@@ -2,11 +2,11 @@
 {
     public abstract class State : IState
     {
-        protected StateMachine _stateMachine;
+        protected StateMachine Context;
 
-        public State(StateMachine stateMachine)
+        public State(StateMachine context)
         {
-            _stateMachine = stateMachine;
+            Context = context;
         }
 
         public abstract void Enter();
