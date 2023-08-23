@@ -2,8 +2,6 @@
 {
     public interface IValuableHUD
     {
-        void UpdateReloadBar(float percent);
-        void ShowReloadBar();
-        void HideReloadBar();
+        public ReloadBar CoinsReloadBar { get; }
     }
 }

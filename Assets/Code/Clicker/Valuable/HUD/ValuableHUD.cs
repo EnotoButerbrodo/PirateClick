@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -11,26 +12,13 @@ namespace Code.Clicker.HUD
         [SerializeField] private TextMeshProUGUI _availableCoins;
         
 
-        public void ShowReloadBar()
-        {
-            _coinsReloadBar.Show();
-        }
+        public ReloadBar CoinsReloadBar => _coinsReloadBar;
 
-        public void HideReloadBar()
-        {
-            _coinsReloadBar.Hide();
-        }
-        
-        public void UpdateReloadBar(float percent)
-        {
-            _coinsReloadBar.SetPercent(percent);
-        }
-        
         private void OnEnable()
         {
             _valuable.AvailableCoinsChanged += OnCoinsChanged;
         }
-        
+
         private void OnCoinsChanged(int coins)
         {
             _availableCoins.text = coins.ToString();
@@ -40,7 +28,5 @@ namespace Code.Clicker.HUD
         {
             _valuable.AvailableCoinsChanged -= OnCoinsChanged;
         }
-
-        
     }
 }

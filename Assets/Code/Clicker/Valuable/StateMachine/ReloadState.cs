@@ -23,7 +23,7 @@ namespace Code.Clicker
         public override void Enter()
         {
             Animator.SetReloading(true);
-            _hud.ShowReloadBar();
+            _hud.CoinsReloadBar.Show();
             _timer.Start(Valuable.CoinsRefreshTime);
             _timer.Ticked += OnTimerTick;
             _timer.Finished += OnTimerFinish;
@@ -37,13 +37,13 @@ namespace Code.Clicker
         private void OnTimerTick(TimerEventArgs args)
         {
             Debug.Log(args.Percent);
-            _hud.UpdateReloadBar(args.Percent);
+            _hud.CoinsReloadBar.SetPercent(args.Percent);
         }
 
         public override void Exit()
         {
             Animator.SetReloading(false);
-            _hud.HideReloadBar();
+            _hud.CoinsReloadBar.Hide();
             _timer.Ticked -= OnTimerTick;
             _timer.Finished -= OnTimerFinish;
             _timer.Stop();
@@ -52,6 +52,7 @@ namespace Code.Clicker
         public override void React()
         {
             Animator.SetReloadClick();
+            _hud.CoinsReloadBar.DoAttention();
         }
     }
 }
