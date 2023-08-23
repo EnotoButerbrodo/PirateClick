@@ -4079,12 +4079,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
+      propertyPath: CoinsCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: MaxCoinsCount
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: CoinsRefreshTime
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: m_RootOrder

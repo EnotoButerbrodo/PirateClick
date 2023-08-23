@@ -201,10 +201,8 @@ MonoBehaviour:
   CoinsValuable: 1
   MaxCoinsCount: 20
   CoinsRefreshTime: 1
-  CoinsCount: 20
+  CoinsCount: 0
   _stateMachine: {fileID: 3411079997167327212}
-  animator: {fileID: 3564329345568922938}
-  selectableMaterial: {fileID: 5513267727554433673}
 --- !u!114 &3564329345568922938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,9 +216,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3633688209402567273}
+  selectableMaterial: {fileID: 5513267727554433673}
   _clickBoolName: Click
   _spawnName: Spawn
   _clickAnimationCancelTime: 0.25
+  _materialAnimationTime: 0.1
 --- !u!114 &5121208896822585791
 MonoBehaviour:
   m_ObjectHideFlags: 0

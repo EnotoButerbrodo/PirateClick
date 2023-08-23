@@ -1,26 +1,48 @@
 ﻿using System;
 using System.Collections;
+using EnotoButebrodo;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Clicker
 {
     public class ValuableAnimator : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
+        [SerializeField] private SelectableMaterial selectableMaterial;
         [SerializeField] private string _clickBoolName = "Click";
         [SerializeField] private string _spawnName = "Spawn";
         [SerializeField][Range(0f, 10f)] private float _clickAnimationCancelTime;
-        
+        [SerializeField][Range(0f, 10f)] private float _materialAnimationTime = 0.1f;
+
         private int _clickHash;
         private int _spawnHash;
-
-        private float _clickAnimationTimer = 0f;
         
+        private Coroutine _clickAnimation;
+
+
         public void StartClickAnimation()
         {
-            _animator.SetBool(_clickHash, true);
+            if (_clickAnimation != null)
+                StopCoroutine(_clickAnimation);
+            _clickAnimation =  StartCoroutine(ClickAniamation());
             
-            _clickAnimationTimer = 0f;
+            StartCoroutine(MaterialAnimation());
+        }
+
+        private IEnumerator ClickAniamation()
+        {
+            _animator.SetBool(_clickHash, true);
+            yield return new WaitForSeconds(_clickAnimationCancelTime);
+            _animator.SetBool(_clickHash, false);
+            
+        }
+
+        private IEnumerator MaterialAnimation()
+        {
+            selectableMaterial.SetSelected();
+            yield return new WaitForSeconds(_materialAnimationTime);
+            selectableMaterial.SetDeselected();
         }
 
         public void PlaySpawnAnimation()
@@ -28,26 +50,17 @@ namespace Code.Clicker
             _animator.SetTrigger(_spawnHash);
         }
         
-        private void CancelClickAnimation()
-        {
-            _animator.SetBool(_clickHash, false);
-        }
         
         private void Awake()
         {
             CalculateAnimationsHash();
         }
 
-        private void Update()
+        private IEnumerator SelectReaction()
         {
-            
-            if (_clickAnimationTimer >= _clickAnimationCancelTime)
-            {
-                _clickAnimationTimer = 0;
-                CancelClickAnimation();
-            }
-            _clickAnimationTimer += Time.deltaTime;
-                
+            selectableMaterial.SetSelected();
+            yield return new WaitForSeconds(0.1f);
+            selectableMaterial.SetDeselected();
         }
 
         private void CalculateAnimationsHash()
