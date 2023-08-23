@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858f2d70a8224422b468409e9425c2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earnAreaCollider: {fileID: 7582677927539423341}
+  _earnAreaCollider: {fileID: 1173004820330410633}
 --- !u!114 &3411079997167327212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateFactory: {fileID: 7251202650837714083}
   <Valuable>k__BackingField: {fileID: 5001956247563321885}
-  <Animator>k__BackingField: {fileID: 3564329345568922938}
+  <Animator>k__BackingField: {fileID: 950493886981992135}
 --- !u!1 &5638537012494097173
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,9 +155,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5442582108183636105}
   - component: {fileID: 5001956247563321885}
-  - component: {fileID: 3564329345568922938}
   - component: {fileID: 5121208896822585791}
   - component: {fileID: 5513267727554433673}
+  - component: {fileID: 950493886981992135}
   - component: {fileID: 3633688209402567273}
   - component: {fileID: 7582677927539423341}
   m_Layer: 6
@@ -203,24 +203,6 @@ MonoBehaviour:
   CoinsRefreshTime: 1
   CoinsCount: 0
   _stateMachine: {fileID: 3411079997167327212}
---- !u!114 &3564329345568922938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5638537012494097173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183e636e4f924d2faf9b85a205cd2b9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 3633688209402567273}
-  selectableMaterial: {fileID: 5513267727554433673}
-  _clickBoolName: Click
-  _spawnName: Spawn
-  _clickAnimationCancelTime: 0.25
-  _materialAnimationTime: 0.1
 --- !u!114 &5121208896822585791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +236,25 @@ MonoBehaviour:
   - {fileID: 1502902094536335727}
   - {fileID: 3990691328532588043}
   - {fileID: 4232340503048239000}
+--- !u!114 &950493886981992135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638537012494097173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183e636e4f924d2faf9b85a205cd2b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 3633688209402567273}
+  selectableMaterial: {fileID: 5513267727554433673}
+  _clickBoolName: Click
+  _spawnName: Spawn
+  _reloadingName: Reloading
+  _clickAnimationCancelTime: 0.1
+  _materialAnimationTime: 0.1
 --- !u!95 &3633688209402567273
 Animator:
   serializedVersion: 5

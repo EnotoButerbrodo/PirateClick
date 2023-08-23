@@ -1721,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 551496501440381638, guid: 853b2b593a36e64449b5c973f573efba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 551496501440381638, guid: 853b2b593a36e64449b5c973f573efba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4084,7 +4084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: MaxCoinsCount
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: CoinsRefreshTime

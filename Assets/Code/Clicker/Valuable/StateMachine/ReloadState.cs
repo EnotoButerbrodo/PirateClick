@@ -18,6 +18,7 @@ namespace Code.Clicker
 
         public override void Enter()
         {
+            Animator.SetReloading(true);
             _timer.Start(Valuable.CoinsRefreshTime);
             _timer.Finished += OnTimerFinish;
         }
@@ -29,6 +30,7 @@ namespace Code.Clicker
 
         public override void Exit()
         {
+            Animator.SetReloading(false);
             _timer.Finished -= OnTimerFinish;
             _timer.Stop();
         }

@@ -19,7 +19,6 @@ namespace Code.Clicker
 
         public override void Exit()
         {
-            
         }
 
         public override void React()
@@ -32,7 +31,8 @@ namespace Code.Clicker
                     ClickerEvents.CallCoinEarned(GetRandomCreatePoint());
                     Animator.StartClickAnimation();
                 }
-                else
+                
+                if (Valuable.CoinsCount == 0)
                 {
                     Context.Enter(Context.ReloadState);
                     break;

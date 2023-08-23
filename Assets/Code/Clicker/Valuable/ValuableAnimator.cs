@@ -12,12 +12,14 @@ namespace Code.Clicker
         [SerializeField] private SelectableMaterial selectableMaterial;
         [SerializeField] private string _clickBoolName = "Click";
         [SerializeField] private string _spawnName = "Spawn";
+        [SerializeField] private string _reloadingName = "Reloading";
         [SerializeField][Range(0f, 10f)] private float _clickAnimationCancelTime;
         [SerializeField][Range(0f, 10f)] private float _materialAnimationTime = 0.1f;
 
         private int _clickHash;
         private int _spawnHash;
-        
+        private int _reloadingHash;
+
         private Coroutine _clickAnimation;
 
 
@@ -28,6 +30,11 @@ namespace Code.Clicker
             _clickAnimation =  StartCoroutine(ClickAniamation());
             
             StartCoroutine(MaterialAnimation());
+        }
+
+        public void SetReloading(bool state)
+        {
+            _animator.SetBool(_reloadingHash, state);
         }
 
         private IEnumerator ClickAniamation()
@@ -44,7 +51,7 @@ namespace Code.Clicker
             yield return new WaitForSeconds(_materialAnimationTime);
             selectableMaterial.SetDeselected();
         }
-
+ 
         public void PlaySpawnAnimation()
         {
             _animator.SetTrigger(_spawnHash);
@@ -67,6 +74,7 @@ namespace Code.Clicker
         {
             _clickHash = Animator.StringToHash(_clickBoolName);
             _spawnHash = Animator.StringToHash(_spawnName);
+            _reloadingHash = Animator.StringToHash(_reloadingName);
         }
     }
 }
