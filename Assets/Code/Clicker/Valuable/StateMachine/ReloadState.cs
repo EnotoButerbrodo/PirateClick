@@ -44,7 +44,6 @@ namespace Code.Clicker
         {
             Animator.SetReloading(false);
             _hud.HideReloadBar();
-            
             _timer.Ticked -= OnTimerTick;
             _timer.Finished -= OnTimerFinish;
             _timer.Stop();

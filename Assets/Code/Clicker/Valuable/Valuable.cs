@@ -9,11 +9,23 @@ namespace Code.Clicker
 {
     public class Valuable : MonoBehaviour, IClickable
     {
+        public event Action<int> AvailableCoinsChanged;
+        
         public int CoinsValuable = 1;
-        public int MaxCoinsCount = 20;
+        public int MaxAvailableCoinsCount = 20;
         public float CoinsRefreshTime = 1f;
-        public int CoinsCount = 20;
-
+        
+        [field: SerializeField] public int AvailableCoins
+        {
+            get => _availableAvailableCoins;
+            set
+            {
+                _availableAvailableCoins = value;
+                AvailableCoinsChanged?.Invoke(_availableAvailableCoins);
+            }
+        }
+        private int _availableAvailableCoins;
+        
         [SerializeField] private ValuableStateMachine _stateMachine;
 
         private void Start()

@@ -14,7 +14,7 @@ namespace Code.Clicker
 
         public override void Enter()
         {
-            Valuable.CoinsCount = Valuable.MaxCoinsCount;
+            Valuable.AvailableCoins = Valuable.MaxAvailableCoinsCount;
         }
 
         public override void Exit()
@@ -25,14 +25,14 @@ namespace Code.Clicker
         {
             for (int i = 0; i < Valuable.CoinsValuable; i++)
             {
-                if (Valuable.CoinsCount > 0)
+                if (Valuable.AvailableCoins > 0)
                 {
-                    Valuable.CoinsCount--;
+                    Valuable.AvailableCoins--;
                     ClickerEvents.CallCoinEarned(GetRandomCreatePoint());
                     Animator.StartClickAnimation();
                 }
                 
-                if (Valuable.CoinsCount == 0)
+                if (Valuable.AvailableCoins == 0)
                 {
                     Context.Enter(Context.ReloadState);
                     break;
