@@ -14,7 +14,7 @@ namespace Code.Clicker
 
         public override void Enter()
         {
-            Valuable.AvailableCoins = Valuable.MaxAvailableCoinsCount;
+            Valuable.AvailableCoins = Valuable.Stats.MaxAvailableCoinsCount;
         }
 
         public override void Exit()
@@ -23,7 +23,7 @@ namespace Code.Clicker
 
         public override void React()
         {
-            for (int i = 0; i < Valuable.CoinsValuable; i++)
+            for (int i = 0; i < Valuable.Stats.CoinsValuable; i++)
             {
                 if (Valuable.AvailableCoins > 0)
                 {

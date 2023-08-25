@@ -1,6 +1,4 @@
-﻿using System;
-using DG.Tweening;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Code.Clicker.HUD

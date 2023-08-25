@@ -24,7 +24,7 @@ namespace Code.Clicker
         {
             Animator.SetReloading(true);
             _hud.CoinsReloadBar.Show();
-            _timer.Start(Valuable.CoinsRefreshTime);
+            _timer.Start(Valuable.Stats.CoinsRefreshTime);
             _timer.Ticked += OnTimerTick;
             _timer.Finished += OnTimerFinish;
         }

@@ -1,19 +1,22 @@
 ﻿using System;
-using EnotoButebrodo;
 using NaughtyAttributes;
 using UnityEngine;
-using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Code.Clicker
 {
-    public class Valuable : MonoBehaviour, IClickable
+    [Serializable]
+    public class ValuableStats
     {
-        public event Action<int> AvailableCoinsChanged;
-        
         public int CoinsValuable = 1;
         public int MaxAvailableCoinsCount = 20;
         public float CoinsRefreshTime = 1f;
+    }
+    
+    public class Valuable : MonoBehaviour, IClickable
+    {
+        public event Action<int> AvailableCoinsChanged;
+
+        public ValuableStats Stats;
         
         [field: SerializeField] public int AvailableCoins
         {
