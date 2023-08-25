@@ -23,15 +23,23 @@ namespace Code.Clicker
         private int _reload;
 
         private Coroutine _clickAnimation;
+        private Coroutine _earnAnimation;
 
 
         public void StartClickAnimation()
         {
             if (_clickAnimation != null)
                 StopCoroutine(_clickAnimation);
-            _clickAnimation =  StartCoroutine(ClickAniamation());
+            _clickAnimation =  StartCoroutine(ClickAnimation());
             
-            StartCoroutine(MaterialAnimation());
+            //StartCoroutine(MaterialAnimation());
+        }
+
+        public void PlayEarnAnimation()
+        {
+            if (_earnAnimation != null)
+                return;
+            _earnAnimation = StartCoroutine(MaterialAnimation());
         }
 
         public void SetReloading(bool state)
@@ -44,12 +52,11 @@ namespace Code.Clicker
             _animator.SetTrigger(_reload);
         }
 
-        private IEnumerator ClickAniamation()
+        private IEnumerator ClickAnimation()
         {
             _animator.SetBool(_click, true);
             yield return new WaitForSeconds(_clickAnimationCancelTime);
             _animator.SetBool(_click, false);
-            
         }
 
         private IEnumerator MaterialAnimation()

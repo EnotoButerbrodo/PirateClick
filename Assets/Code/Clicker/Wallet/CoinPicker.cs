@@ -40,18 +40,13 @@ namespace Code.Clicker
         private void OnCoinEarned(Vector3 earnWorldPosition)
         {
             var coin = _coinFactory.Get(earnWorldPosition);
-            
-            CreateCoin(coin);
-        }
-
-        private void CreateCoin(Coin coin)
-        {
             coin.SetTarget(_coinPickupPosition);
         }
+        
 
         private void OnCoinPickup(Coin coin)
         {
-            _audio.Play(_pickupAudio, 0.5f);
+            _audio.PlayOneShot(_pickupAudio, 0.5f);
             _wallet.Add(1);
         }
     }
