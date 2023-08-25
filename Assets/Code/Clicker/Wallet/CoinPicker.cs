@@ -10,6 +10,8 @@ namespace Code.Clicker
         [SerializeField] private CoinFactory _coinFactory;
         [SerializeField] private RectTransform _coinPickupPosition;
         [SerializeField] private AudioClip _pickupAudio;
+
+        [SerializeField] private Vector3 _spendPositionRandomOffset;
             
         [Inject] private IWallet _wallet;
         [Inject] private ClickerEvents _clickerEvents;
@@ -40,6 +42,12 @@ namespace Code.Clicker
             _clickerEvents.CoinEarned += OnCoinEarned;
             _clickerEvents.ValuableUnlocked += OnValuableUnlock;
         }
+        
+        private void OnDisable()
+        {
+            _clickerEvents.CoinEarned -= OnCoinEarned;
+            _clickerEvents.ValuableUnlocked -= OnValuableUnlock;
+        }
 
         private void OnValuableUnlock(int cost, ILockedObject unlockedobject)
         {
@@ -51,17 +59,14 @@ namespace Code.Clicker
             var waiter = new WaitForSeconds(1f / cost);
             for (int i = 0; i < cost; i++)
             {
-                Coin coin = _coinFactory.GetCoin(GetTargetWorldPosition(), (c) => {unlockedObject.GetCoin();});
+                var spawnPosition = GetTargetWorldPosition();
+                spawnPosition += GetSpendRandomOffset();
+                Coin coin = _coinFactory.GetCoin(spawnPosition);
                 coin.SetTarget(() => unlockedObject.Position
                     , (c) => {unlockedObject.GetCoin();});
                 
                 yield return waiter;
             }   
-        }
-
-        private void OnDisable()
-        {
-            _clickerEvents.CoinEarned -= OnCoinEarned;
         }
 
         private void OnCoinEarned(int count, ICoinsSource coinsSource)
@@ -74,12 +79,11 @@ namespace Code.Clicker
             var waiter = new WaitForSeconds(1f / coinsCount);
             for (int i = 0; i < coinsCount; i++)
             {
-                var coin = _coinFactory.GetCoin(coinsSource.GetRandomEarnPosition(), OnCoinWalletPickup);
+                var coin = _coinFactory.GetCoin(coinsSource.GetRandomEarnPosition());
                 coin.SetTarget(GetTargetWorldPosition, OnCoinWalletPickup);
                 yield return waiter;
             }   
         }
-        
 
         private void OnCoinWalletPickup(Coin coin)
         {
@@ -87,6 +91,14 @@ namespace Code.Clicker
             _wallet.Add(1);
         }
         
+        private Vector3 GetSpendRandomOffset()
+        {
+            return new Vector3(
+                Random.Range(-_spendPositionRandomOffset.x, _spendPositionRandomOffset.x)
+                , Random.Range(-_spendPositionRandomOffset.y, _spendPositionRandomOffset.y)
+                ,Random.Range(-_spendPositionRandomOffset.z, _spendPositionRandomOffset.z));
+
+        }
         
     }
 }

@@ -17,7 +17,7 @@ namespace Code.Clicker
         }
         
         
-        public Coin GetCoin(Vector3 position, Action<Coin> onReachedTarget)
+        public Coin GetCoin(Vector3 position)
         {
             var coin = _container
                 .InstantiatePrefabForComponent<Coin>
