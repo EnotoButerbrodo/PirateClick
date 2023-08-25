@@ -1,8 +1,4 @@
-﻿
-using System;
-using System.Collections;
-using DG.Tweening;
-
+﻿using System.Collections;
 using Services;
 using UnityEngine;
 using Zenject;
@@ -37,10 +33,20 @@ namespace Code.Clicker
             _clickerEvents.CoinEarned -= OnCoinEarned;
         }
 
-        private void OnCoinEarned(Vector3 earnWorldPosition)
+        private void OnCoinEarned(int count, ICoinsSource coinsSource)
         {
-            var coin = _coinFactory.Get(earnWorldPosition);
-            coin.SetTarget(_coinPickupPosition);
+            StartCoroutine(CoinsEarnCoroutine(count, coinsSource));
+        }
+
+        private IEnumerator CoinsEarnCoroutine(int coinsCount, ICoinsSource coinsSource)
+        {
+            var waiter = new WaitForSeconds(1f / coinsCount);
+            for (int i = 0; i < coinsCount; i++)
+            {
+                var coin = _coinFactory.Get(coinsSource.GetRandomEarnPosition());
+                coin.SetTarget(_coinPickupPosition);
+                yield return waiter;
+            }   
         }
         
 

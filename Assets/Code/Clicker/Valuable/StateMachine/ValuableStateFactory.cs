@@ -11,7 +11,7 @@ namespace Code.Clicker
         [SerializeField] private ValuableHUD _valuableHUD;
         [Inject] private DiContainer _container;
         public ValuableState GetHasCoinsState(ValuableStateMachine context) 
-            => new HasCoinsState(context, _earnAreaCollider);
+            => new HasCoinsState(context);
 
         public ValuableState GetReloadState(ValuableStateMachine context) 
             => new ReloadState(context

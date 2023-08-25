@@ -36,7 +36,6 @@ namespace Code.Clicker
 
         private void OnTimerTick(TimerEventArgs args)
         {
-            Debug.Log(args.Percent);
             _hud.CoinsReloadBar.SetPercent(args.Percent);
         }
 

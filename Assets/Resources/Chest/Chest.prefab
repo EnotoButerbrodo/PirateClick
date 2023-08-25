@@ -467,9 +467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c069639bd344fd96dfc004bc08a42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinsValuable: 1
-  MaxAvailableCoinsCount: 5
-  CoinsRefreshTime: 5
+  _coinsCreateArea: {fileID: 1173004820330410633}
+  Stats:
+    CoinsValuable: 1
+    MaxAvailableCoinsCount: 20
+    CoinsRefreshTime: 1
+  _availableAvailableCoins: 0
   _stateMachine: {fileID: 3411079997167327212}
 --- !u!114 &5121208896822585791
 MonoBehaviour:
