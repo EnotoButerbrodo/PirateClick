@@ -24,6 +24,8 @@ namespace Code.Clicker
         [NaughtyAttributes.ReadOnly]
         [SerializeField] private int _currentCoins;
 
+        private bool _unlocked;
+
         [Button()]
         public void Unlock()
         {
@@ -41,9 +43,13 @@ namespace Code.Clicker
 
         private void TryUnlock()
         {
+            if(_unlocked)
+                return;
+            
             if (_wallet.TrySpend(Cost))
             {
                 _clickerEvents.CallValuableUnlock(Cost, this);
+                _unlocked = true;
                 return;
             }
             
