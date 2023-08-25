@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Code.Clicker
 {
@@ -7,7 +8,9 @@ namespace Code.Clicker
         public event Action Unlocked;
         public event Action FailedUnlock;
         
+        public Vector3 Position { get; }
         public int Cost { get; }
         public void Unlock();
+        public void GetCoin();
     }
 }

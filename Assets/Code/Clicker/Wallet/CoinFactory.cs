@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Clicker
@@ -14,14 +15,16 @@ namespace Code.Clicker
         {
             _camera = Camera.main;
         }
-
-        public Coin Get(Vector3 position)
+        
+        
+        public Coin GetCoin(Vector3 position, Action<Coin> onReachedTarget)
         {
             var coin = _container
-                .InstantiatePrefabForComponent<Coin>(_prefab, position, Quaternion.identity, null);
-            coin.Initialize(_camera);
+                .InstantiatePrefabForComponent<Coin>
+                    (_prefab, position, Quaternion.identity, null);
 
             return coin;
         }
+
     }
 }
