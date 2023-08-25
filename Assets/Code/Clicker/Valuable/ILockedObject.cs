@@ -7,8 +7,8 @@ namespace Code.Clicker
     {
         public event Action Unlocked;
         public event Action FailedUnlock;
-        
-        public Vector3 Position { get; }
+
+        public Vector3 GetCoinsTarget();
         public int Cost { get; }
         public void Unlock();
         public void GetCoin();

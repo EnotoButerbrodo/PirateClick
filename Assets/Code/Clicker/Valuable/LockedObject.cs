@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using Unity.Collections;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Code.Clicker
 {
@@ -11,10 +12,13 @@ namespace Code.Clicker
         public event Action Unlocked;
         public event Action FailedUnlock;
 
+        public Vector3 GetCoinsTarget() 
+            => GetRandomEarnPosition();
+
         [field: SerializeField] public int Cost { get; private set; } = 50;
         [SerializeField] private Vector3 _positionOffset;
-        public Vector3 Position => transform.position + _positionOffset;
-        
+        [SerializeField] private BoxCollider _coinsTargetArea;
+
         [SerializeField] private ValuableType _type;
 
         [Inject] private IValuableFactory _factory;
@@ -60,10 +64,16 @@ namespace Code.Clicker
         {
             TryUnlock();
         }
-
-        private void OnDrawGizmosSelected()
+        
+        public Vector3 GetRandomEarnPosition()
         {
-            Gizmos.DrawSphere(Position, 0.1f);
+            var bounds = _coinsTargetArea.bounds;
+            
+            return new Vector3(
+                Random.Range(bounds.min.x, bounds.max.x),
+                Random.Range(bounds.min.y, bounds.max.y),
+                Random.Range(bounds.min.z, bounds.max.z)
+            );
         }
     }
 }

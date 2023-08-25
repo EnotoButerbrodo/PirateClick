@@ -85,10 +85,11 @@ namespace Code.Clicker
                 var spawnPosition = GetTargetWorldPosition();
                 spawnPosition += GetSpendRandomOffset();
                 Coin coin = _coinFactory.GetCoin(spawnPosition);
-                coin.SetTarget(() => unlockedObject.Position
+                var targetPosition = unlockedObject.GetCoinsTarget();
+                coin.SetTarget(() => targetPosition
                     , (c) => OnCoinUnlockReached(unlockedObject));
                 
-                yield return waiter;
+                yield return waiter; 
             }   
         }
 
