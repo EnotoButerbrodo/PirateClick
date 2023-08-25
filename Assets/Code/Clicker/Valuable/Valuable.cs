@@ -4,21 +4,13 @@ using UnityEngine;
 
 namespace Code.Clicker
 {
-    [Serializable]
-    public class ValuableStats
-    {
-        public int CoinsValuable = 1;
-        public int MaxAvailableCoinsCount = 20;
-        public float CoinsRefreshTime = 1f;
-    }
-    
     public class Valuable : MonoBehaviour, IClickable
     {
         public event Action<int> AvailableCoinsChanged;
 
         public ValuableStats Stats;
         
-        [field: SerializeField] public int AvailableCoins
+        public int AvailableCoins
         {
             get => _availableAvailableCoins;
             set
@@ -27,7 +19,7 @@ namespace Code.Clicker
                 AvailableCoinsChanged?.Invoke(_availableAvailableCoins);
             }
         }
-        private int _availableAvailableCoins;
+        [ReadOnly][SerializeField]private int _availableAvailableCoins;
         
         [SerializeField] private ValuableStateMachine _stateMachine;
 
