@@ -1,5 +1,6 @@
 ﻿using System;
 using NaughtyAttributes;
+using Unity.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -20,7 +21,8 @@ namespace Code.Clicker
         [Inject] private IWallet _wallet;
         [Inject] private ClickerEvents _clickerEvents;
 
-        private int _currentCoins;
+        [NaughtyAttributes.ReadOnly]
+        [SerializeField] private int _currentCoins;
 
         [Button()]
         public void Unlock()

@@ -49,26 +49,7 @@ namespace Code.Clicker
             _clickerEvents.ValuableUnlocked -= OnValuableUnlock;
         }
 
-        private void OnValuableUnlock(int cost, ILockedObject unlockedobject)
-        {
-            StartCoroutine(UnlockCoroutine(cost, unlockedobject));
-        }
-
-        private IEnumerator UnlockCoroutine(int cost, ILockedObject unlockedObject)
-        {
-            var waiter = new WaitForSeconds(1f / cost);
-            for (int i = 0; i < cost; i++)
-            {
-                var spawnPosition = GetTargetWorldPosition();
-                spawnPosition += GetSpendRandomOffset();
-                Coin coin = _coinFactory.GetCoin(spawnPosition);
-                coin.SetTarget(() => unlockedObject.Position
-                    , (c) => {unlockedObject.GetCoin();});
-                
-                yield return waiter;
-            }   
-        }
-
+        
         private void OnCoinEarned(int count, ICoinsSource coinsSource)
         {
             StartCoroutine(CoinsEarnCoroutine(count, coinsSource));
@@ -90,6 +71,33 @@ namespace Code.Clicker
             _audio.PlayOneShot(_pickupAudio, 0.5f);
             _wallet.Add(1);
         }
+        
+        private void OnValuableUnlock(int cost, ILockedObject unlockedobject)
+        {
+            StartCoroutine(UnlockCoroutine(cost, unlockedobject));
+        }
+
+        private IEnumerator UnlockCoroutine(int cost, ILockedObject unlockedObject)
+        {
+            var waiter = new WaitForSeconds(1f / cost);
+            for (int i = 0; i < cost; i++)
+            {
+                var spawnPosition = GetTargetWorldPosition();
+                spawnPosition += GetSpendRandomOffset();
+                Coin coin = _coinFactory.GetCoin(spawnPosition);
+                coin.SetTarget(() => unlockedObject.Position
+                    , (c) => OnCoinUnlockReached(unlockedObject));
+                
+                yield return waiter;
+            }   
+        }
+
+        private void OnCoinUnlockReached(ILockedObject unlockedObject)
+        {
+            unlockedObject.GetCoin();
+            _audio.PlayOneShot(_pickupAudio, 0.5f);
+        }
+
         
         private Vector3 GetSpendRandomOffset()
         {

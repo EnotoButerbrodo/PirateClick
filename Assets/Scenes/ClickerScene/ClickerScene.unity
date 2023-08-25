@@ -3885,7 +3885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
       propertyPath: <Cost>k__BackingField
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4395,7 +4395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001956247563321885, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: Stats.MaxAvailableCoinsCount
-      value: 200
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5442582108183636105, guid: 52f7785e97e30bf4c9236199ea8b4c0d, type: 3}
       propertyPath: m_RootOrder
