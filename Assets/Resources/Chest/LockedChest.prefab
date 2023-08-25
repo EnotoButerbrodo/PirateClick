@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1912772573617944403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4999269282214028106}
+  - component: {fileID: 1217779924057017667}
+  m_Layer: 0
+  m_Name: CoinsTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4999269282214028106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912772573617944403}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.58546656, y: 0.037118077, z: -0.09387466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1005033226486416210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1217779924057017667
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912772573617944403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.31629574, y: 0.41235283, z: 0.55631137}
+  m_Center: {x: -0.5697536, y: 0.20520197, z: 0.08824694}
 --- !u!1001 &1685351953780360648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +179,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2011604947008209145, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_Size.x
+      value: 0.45997602
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011604947008209145, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6644458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011604947008209145, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_Center.x
+      value: -0.015171677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011604947008209145, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0030938685
+      objectReference: {fileID: 0}
     - target: {fileID: 3593436855365619358, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
       propertyPath: m_Name
       value: LockedChest
@@ -138,6 +207,10 @@ PrefabInstance:
       propertyPath: _lockedObject
       value: 
       objectReference: {fileID: 8790074234790938542}
+    - target: {fileID: 6940452635994778572, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: _coinsTargetArea
+      value: 
+      objectReference: {fileID: 1217779924057017667}
     - target: {fileID: 6940452635994778572, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
       propertyPath: _positionOffset.y
       value: 0.5
@@ -152,6 +225,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1468021138764558128, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1685351953779973960}
+    - targetCorrespondingSourceObject: {fileID: 1468021138764558128, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4999269282214028106}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
 --- !u!4 &1005033226486416210 stripped
