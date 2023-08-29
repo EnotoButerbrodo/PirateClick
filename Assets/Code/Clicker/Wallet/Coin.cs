@@ -1,5 +1,7 @@
 ﻿using System;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using Zenject;
 
@@ -20,12 +22,20 @@ namespace Code.Clicker
         private float _speed;
         private Action<Coin> _onPicked;
         private Func<Vector3> _targetPositionSource;
+        private TweenerCore<Vector3, Vector3, VectorOptions> _changeSizeTween;
 
         public void SetTarget(Func<Vector3> positionSource, Action<Coin> onPicked)
         {
             _targetPositionSource = positionSource;
             _onPicked = onPicked;
             _speed = StartSpeed;
+            
+            transform.localScale = Vector3.zero;
+            _changeSizeTween?.Kill();
+            _changeSizeTween = transform
+                .DOScale(Vector3.one, _smallerSpeed)
+                .SetLink(gameObject);
+            
         }
         
         private void Update()
@@ -43,7 +53,8 @@ namespace Code.Clicker
 
             if (distanceToTarget <= _smallerDistance)
             {
-                transform
+                _changeSizeTween?.Kill();
+                _changeSizeTween = transform
                     .DOScale(Vector3.zero, _smallerSpeed)
                     .SetLink(gameObject);
             }
