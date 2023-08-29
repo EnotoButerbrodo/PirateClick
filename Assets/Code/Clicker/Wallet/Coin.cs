@@ -12,6 +12,7 @@ namespace Code.Clicker
         public float StartSpeed = 2.5f;
         public float AccelerationPerSecond = 1f;
         public float RotationSpeed = 300f;
+        public float MaxLiveTime = 10f;
         
         [SerializeField] private float _smallerDistance = 0.1f;
         [SerializeField] private float _smallerSpeed = 0.5f;
@@ -23,6 +24,10 @@ namespace Code.Clicker
         private Action<Coin> _onPicked;
         private Func<Vector3> _targetPositionSource;
         private TweenerCore<Vector3, Vector3, VectorOptions> _changeSizeTween;
+        private TweenerCore<Vector3, Vector3, VectorOptions> _pickupTween;
+        private float _liveTimer;
+        private bool _enabled;
+        
 
         public void SetTarget(Func<Vector3> positionSource, Action<Coin> onPicked)
         {
@@ -35,7 +40,9 @@ namespace Code.Clicker
             _changeSizeTween = transform
                 .DOScale(Vector3.one, _smallerSpeed)
                 .SetLink(gameObject);
-            
+
+            _liveTimer = MaxLiveTime;
+            _enabled = true;
         }
         
         private void Update()
@@ -51,21 +58,25 @@ namespace Code.Clicker
 
             var distanceToTarget = Vector3.Distance(targetWorldPosition, coinPosition);
 
-            if (distanceToTarget <= _smallerDistance)
+            if ((distanceToTarget <= _smallerDistance || _liveTimer <= 0) 
+                && !_pickupTween.IsActive())
             {
-                _changeSizeTween?.Kill();
-                _changeSizeTween = transform
+                _pickupTween?.Kill();
+                _pickupTween = transform
                     .DOScale(Vector3.zero, _smallerSpeed)
-                    .SetLink(gameObject);
-            }
-            if (distanceToTarget <= 0.05f)
-            {
-                _onPicked.Invoke(this);
-                Destroy(gameObject);
+                    .SetLink(gameObject)
+                    .OnKill(Pickup);
             }
 
             _speed += AccelerationPerSecond * Time.deltaTime;
+            _liveTimer -= Time.deltaTime;
             _rigidbody.AddTorque(transform.up * RotationSpeed * Time.deltaTime);
+        }
+
+        private void Pickup()
+        {
+            _onPicked.Invoke(this);
+            Destroy(gameObject);
         }
     }
 }
