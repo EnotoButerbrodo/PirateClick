@@ -3884,8 +3884,20 @@ PrefabInstance:
       value: LockedChest (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
+      propertyPath: _stats.CoinsValuable
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
       propertyPath: <Cost>k__BackingField
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
+      propertyPath: _stats.CoinsRefreshTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790074234790938542, guid: 4bf105bee295a2c4697876bf66d1a3ef, type: 3}
+      propertyPath: _stats.MaxAvailableCoinsCount
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

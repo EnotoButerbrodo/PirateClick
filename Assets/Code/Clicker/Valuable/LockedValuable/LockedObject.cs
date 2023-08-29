@@ -16,6 +16,8 @@ namespace Code.Clicker
             => GetRandomEarnPosition();
 
         [field: SerializeField] public int Cost { get; private set; } = 50;
+        [SerializeField] private ValuableStats _stats;
+        
         [SerializeField] private Vector3 _positionOffset;
         [SerializeField] private BoxCollider _coinsTargetArea;
 
@@ -34,6 +36,7 @@ namespace Code.Clicker
         public void Unlock()
         {
             var valuable = _factory.Get(_type, transform.position, transform.rotation);
+            valuable.Stats = _stats;
             Unlocked?.Invoke();
             Destroy(gameObject);
         }
