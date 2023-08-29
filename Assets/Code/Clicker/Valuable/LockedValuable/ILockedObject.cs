@@ -12,5 +12,6 @@ namespace Code.Clicker
         public int Cost { get; }
         public void Unlock();
         public void AcceptCoin();
+        event Action<int> CoinsToUnlockChanged;
     }
 }

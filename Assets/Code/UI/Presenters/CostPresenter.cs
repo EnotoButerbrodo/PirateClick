@@ -20,11 +20,18 @@ namespace Code.UI.Presenters
         private void OnEnable()
         {
             _lockedObject.FailedUnlock += OnFailUnlock;
+            _lockedObject.CoinsToUnlockChanged += OnCoinsToUnlockChanged;
+        }
+
+        private void OnCoinsToUnlockChanged(int coinsValue)
+        {
+            _text.text = coinsValue.ToString();
         }
 
         private void OnDisable()
         {
             _lockedObject.FailedUnlock -= OnFailUnlock;
+            _lockedObject.CoinsToUnlockChanged -= OnCoinsToUnlockChanged;
         }
 
         private void OnFailUnlock()

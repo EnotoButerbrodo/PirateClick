@@ -11,6 +11,7 @@ namespace Code.Clicker
     {
         public event Action Unlocked;
         public event Action FailedUnlock;
+        public event Action<int> CoinsToUnlockChanged;
 
         public Vector3 GetCoinsTarget() 
             => GetRandomEarnPosition();
@@ -44,6 +45,7 @@ namespace Code.Clicker
         public void AcceptCoin()
         {
             _currentCoins++;
+            CoinsToUnlockChanged?.Invoke(Cost - _currentCoins);
             if(_currentCoins >= Cost)
                 Unlock();
         }
