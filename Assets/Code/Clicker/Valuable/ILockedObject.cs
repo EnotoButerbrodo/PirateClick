@@ -11,6 +11,6 @@ namespace Code.Clicker
         public Vector3 GetCoinsTarget();
         public int Cost { get; }
         public void Unlock();
-        public void GetCoin();
+        public void AcceptCoin();
     }
 }

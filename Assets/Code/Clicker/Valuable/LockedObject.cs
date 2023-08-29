@@ -38,7 +38,7 @@ namespace Code.Clicker
             Destroy(gameObject);
         }
 
-        public void GetCoin()
+        public void AcceptCoin()
         {
             _currentCoins++;
             if(_currentCoins >= Cost)

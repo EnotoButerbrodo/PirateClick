@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Services;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Code.Clicker
 {
@@ -95,7 +97,7 @@ namespace Code.Clicker
 
         private void OnCoinUnlockReached(ILockedObject unlockedObject)
         {
-            unlockedObject.GetCoin();
+            unlockedObject.AcceptCoin();
             _audio.PlayOneShot(_pickupAudio, 0.5f);
         }
 
