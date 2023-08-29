@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Code.Clicker
@@ -21,7 +22,11 @@ namespace Code.Clicker
 
         public bool TryFindClickableObjectAtPosition(Vector2 touchPosition, out IClickable clickableObject)
         {
+            
             clickableObject = null;
+            
+            if (EventSystem.current.IsPointerOverGameObject())
+                return false;
             
             Ray clickRay = _camera.ScreenPointToRay(touchPosition);
             
@@ -29,7 +34,7 @@ namespace Code.Clicker
                 ray: clickRay
                 , results: _clickCheckResults
                 , maxDistance: _raycastLenght
-                , layerMask: _clickableLayer);
+                , layerMask: _clickableLayer.value);
 
             if (findedObjectsCount == 0)
                 return false;
