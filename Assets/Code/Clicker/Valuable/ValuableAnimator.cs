@@ -50,6 +50,7 @@ namespace Code.Clicker
         public void SetReloadClick()
         {
             _animator.SetTrigger(_reload);
+            _animator.ResetTrigger(_click);
         }
 
         private IEnumerator ClickAnimation()

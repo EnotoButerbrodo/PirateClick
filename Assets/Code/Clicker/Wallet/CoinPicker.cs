@@ -81,7 +81,7 @@ namespace Code.Clicker
 
         private IEnumerator UnlockCoroutine(int cost, ILockedObject unlockedObject)
         {
-            var waiter = new WaitForSeconds(0.1f);
+            var waiter = new WaitForSeconds(1f / cost);
             for (int i = 0; i < cost; i++)
             {
                 var spawnPosition = GetTargetWorldPosition();
