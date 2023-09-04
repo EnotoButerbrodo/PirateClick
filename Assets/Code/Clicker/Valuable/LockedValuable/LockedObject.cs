@@ -1,6 +1,5 @@
 ﻿using System;
 using NaughtyAttributes;
-using Unity.Collections;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -10,7 +9,7 @@ namespace Code.Clicker
     public class LockedObject : MonoBehaviour, ILockedObject, IClickable
     {
         public event Action Unlocked;
-        public event Action FailedUnlock;
+        public event Action FailedUnlock; 
         public event Action<int> CoinsToUnlockChanged;
 
         public Vector3 GetCoinsTarget() 
