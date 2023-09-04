@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Code.Clicker.HUD
 {
-    public class ValuableHUD : MonoBehaviour, IValuableHUD
+    public class ValuableHUD : HUDScreen, IValuableHUD
     {
         [SerializeField] private Valuable _valuable;
         [SerializeField] private ValuableUpgrates _upgrates;

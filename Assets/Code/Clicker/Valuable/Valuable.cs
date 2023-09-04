@@ -1,12 +1,16 @@
 ﻿using System;
+using Code.Clicker.HUD;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Code.Clicker
 {
     public class Valuable : MonoBehaviour, IClickable, ICoinsSource
+    , IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField] private ValuableHUD _hud;
         [SerializeField] private BoxCollider _coinsCreateArea;
         
         public event Action<int> AvailableCoinsChanged;
@@ -46,6 +50,16 @@ namespace Code.Clicker
                 Random.Range(bounds.min.y, bounds.max.y),
                 Random.Range(bounds.min.z, bounds.max.z)
             );
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _hud.Show();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _hud.Hide();
         }
     }
 }

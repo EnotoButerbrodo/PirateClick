@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &796148536301011339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -129,7 +129,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16841145166083665}
-  - component: {fileID: 6154974184936123450}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -158,18 +157,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.02, y: -0.1}
   m_SizeDelta: {x: 0.20000005, y: 0.20000005}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &6154974184936123450
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332017387894272752}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &2967241608080138264
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c069639bd344fd96dfc004bc08a42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hud: {fileID: 1331868657029546044}
   _coinsCreateArea: {fileID: 1173004820330410633}
   Stats:
     CoinsValuable: 1
@@ -940,6 +928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788429045575248837}
   - component: {fileID: 1331868657029546044}
+  - component: {fileID: 7522664926283450750}
   - component: {fileID: 7089329263528928291}
   - component: {fileID: 1593921040818938232}
   - component: {fileID: 3369080362414064698}
@@ -984,12 +973,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75d583cfb744b708d88a48047b6d3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 7522664926283450750}
+  hideTime: 0.1
+  showTime: 0.1
+  hideInAwake: 1
   _valuable: {fileID: 5001956247563321885}
   _upgrates: {fileID: 3809098447546969142}
   _coinsReloadBar: {fileID: 7817286770383208018}
   _availableCoins: {fileID: 8478893088334693587}
   _spawnAnimation: {fileID: 1972985654732444008}
   _reloadUpgrateButton: {fileID: 9198994006330321027}
+--- !u!225 &7522664926283450750
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185732130793220055}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!223 &7089329263528928291
 Canvas:
   m_ObjectHideFlags: 0
@@ -1052,7 +1057,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!111 &1972985654732444008
 Animation:
   m_ObjectHideFlags: 0

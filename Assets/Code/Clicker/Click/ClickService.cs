@@ -25,8 +25,7 @@ namespace Code.Clicker
             
             clickableObject = null;
             
-            if (EventSystem.current.IsPointerOverGameObject())
-                return false;
+           
             
             Ray clickRay = _camera.ScreenPointToRay(touchPosition);
             
