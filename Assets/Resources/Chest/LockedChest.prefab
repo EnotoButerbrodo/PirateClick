@@ -219,6 +219,14 @@ PrefabInstance:
       propertyPath: <Cost>k__BackingField
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7477069655489698813, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477069655489698813, guid: e53bda522eaaa7e4694ea9592b62dc78, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3355506431
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
