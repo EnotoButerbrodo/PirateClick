@@ -7,7 +7,6 @@ namespace Code.Clicker.HUD
     public class ValuableHUD : HUDScreen, IValuableHUD
     {
         [SerializeField] private Valuable _valuable;
-        [SerializeField] private ValuableUpgrates _upgrates;
         [SerializeField] private ReloadBar _coinsReloadBar;
         [SerializeField] private TextMeshProUGUI _availableCoins;
         [SerializeField] private Animation _spawnAnimation;
@@ -22,15 +21,9 @@ namespace Code.Clicker.HUD
         
         private void OnEnable()
         {
-            _valuable.AvailableCoinsChanged += OnCoinsChanged; 
-            _reloadUpgrateButton.onClick.AddListener(OnReloadUpgrade);
+            _valuable.AvailableCoinsChanged += OnCoinsChanged;
         }
-
-        private void OnReloadUpgrade()
-        {
-            if(_upgrates.HasReloadUpgrade())
-                _upgrates.UpgrateReload();
-        }
+        
 
         private void OnCoinsChanged(int coins)
         {
