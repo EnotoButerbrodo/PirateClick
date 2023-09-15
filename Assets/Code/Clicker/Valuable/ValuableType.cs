@@ -2,6 +2,7 @@
 {
     public enum ValuableType
     {
-        Chest
+        Chest,
+        Palm
     }
 }

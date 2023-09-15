@@ -6,6 +6,7 @@ namespace Code.Clicker
     public class ValuableFactory : MonoBehaviour, IValuableFactory
     {
         [SerializeField] private Chest _chest;
+        [SerializeField] private Valuable _palm;
         
         [Inject] private DiContainer _container;
 
