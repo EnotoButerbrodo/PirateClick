@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1468021138764558128}
   - component: {fileID: 6940452635994778572}
   - component: {fileID: 2011604947008209145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LockedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,6 +283,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cost>k__BackingField: 50
+  _stats:
+    CoinsValuable: 1
+    MaxAvailableCoinsCount: 20
+    CoinsRefreshTime: 1
   _positionOffset: {x: 0, y: 0, z: 0}
   _coinsTargetArea: {fileID: 2011604947008209145}
   _type: 0
@@ -358,4 +362,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 7477069655489698813}
-  _lockedObject: {fileID: 0}
+  _lockedObject: {fileID: 6940452635994778572}
