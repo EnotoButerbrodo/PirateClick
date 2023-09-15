@@ -15,8 +15,8 @@ namespace Code.Clicker.HUD
         public ReloadBar CoinsReloadBar => _coinsReloadBar;
 
         public void Spawn()
-        {
-            _spawnAnimation.Play();
+        { 
+            //_spawnAnimation.Play();
         }
         
         private void OnEnable()
