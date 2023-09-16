@@ -6,7 +6,7 @@ namespace Code.Clicker
     public class ValuableFactory : MonoBehaviour, IValuableFactory
     {
         [SerializeField] private Chest _chest;
-        [SerializeField] private Valuable _palm;
+        [SerializeField] private Valuable _palm; 
         
         [Inject] private DiContainer _container;
 
@@ -15,11 +15,14 @@ namespace Code.Clicker
             , Quaternion rotation) =>
             type switch
             {
-                ValuableType.Chest => GetChest(position, rotation),
-                _ => GetChest(position, rotation)
+                ValuableType.Chest => 
+                    _container.InstantiatePrefabForComponent<Valuable>(_chest, position, rotation, null),
+                ValuableType.Palm =>
+                    _container.InstantiatePrefabForComponent<Valuable>(_palm, position, rotation, null),
+                _ => 
+                    _container.InstantiatePrefabForComponent<Valuable>(_chest, position, rotation, null)
             };
 
-        private Chest GetChest(Vector3 position, Quaternion rotation)
-            => _container.InstantiatePrefabForComponent<Chest>(_chest, position, rotation, null);
+
     }
 }
